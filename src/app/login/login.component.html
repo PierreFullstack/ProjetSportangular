@@ -2,24 +2,18 @@
 
 
 <div class="container">
-  <center>
   <h2>Connexion</h2>
   <p>Bienvenue chez nous! Ici on aime le sport!</p>
-  </center>
-  <form>
-    <center>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="sample3">
-    </div>
-    
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <input class="mdl-textfield__input" type="password" id="sample4">
-    </div>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <a >Inscrivez-vous</a>
-      </div>
-      <button mat-raised-button color="primary">Primary</button>
-    </center>
+  
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput name="pseudo" placeholder="Pseudo" >
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" name="mdp" placeholder="Password" >
+    </mat-form-field>
   </form>
+      <button mat-raised-button color="primary">Se connecter</button>
+
  
 </div>
