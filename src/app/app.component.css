@@ -1,0 +1,12 @@
+#logo{
+    position: relative;
+    height:93%;
+    width: 10%;
+    border-style: solid;
+    border-color: rgb(38, 7, 175);
+    left:-2%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
