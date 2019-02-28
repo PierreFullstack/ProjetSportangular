@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AfficheEventComponent } from './affiche-event/affiche-event.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AfficheEventComponent
   ],
   imports: [
     BrowserModule
