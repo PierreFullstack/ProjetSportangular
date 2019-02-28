@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AfficheEventComponent } from './affiche-event/affiche-event.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AfficheEventComponent
+    AfficheEventComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule
