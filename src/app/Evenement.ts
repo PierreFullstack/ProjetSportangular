@@ -9,4 +9,7 @@ export class Evenement{
     public horaire: string;
     public sport: Sport;
     public createur: User;
+
+    constructor(){
+    }
 }
