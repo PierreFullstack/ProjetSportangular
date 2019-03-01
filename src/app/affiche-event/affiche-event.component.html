@@ -1,8 +1,8 @@
 <div id="todo">
-    <mat-card class="example-card">
+    <mat-card class="example-card" *ngFor="let data of tousEvents">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>titre de l'event
+          <mat-card-title>{{data.titre}}
           </mat-card-title>
           <mat-card-subtitle>Nom du sport</mat-card-subtitle>
           <mat-card-subtitle>Date</mat-card-subtitle>
@@ -10,7 +10,7 @@
         <img mat-card-image src="../assets/tennis-event.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-            Description
+            data.description
             <br>
             blablablablablablablabla
           </p>
@@ -20,5 +20,28 @@
         </mat-card-actions>
       </mat-card>
 
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>titre</th>
+            <th>description</th>
+            <th>date/th>
+            <th>horaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tousEvents">
+            <td>{{data.id}}</td>
+            <td>{{data.titre}}</td>
+            <td>{{data.description}}</td>
+            <td>{{data.dateEvent}}</td>
+            <td>{{data.horaire}}</td>
+          </tr>
       
+        </tbody>
+      
+      </table>
+
+
     </div>

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
-
+import { Http, HttpModule } from '@angular/http';
 
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +20,8 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

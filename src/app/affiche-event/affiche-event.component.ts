@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-affiche-event',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AfficheEventComponent implements OnInit {
 
-  constructor() { }
+  tousEvents;
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
+    this.http.get('http://localhost:8080/event').subscribe(
+      reponse => {
+        this.tousEvents=reponse.json();
   }
+  )}
 
 }
