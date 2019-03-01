@@ -1,10 +1,9 @@
-#todo{
-    left: 10%;
+#container{
     margin:2%;
-    margin-left: 10%;
-    height: 300px;
-    width: 200px;
+    margin-left: 20%;
+
 }
-.example-card{
-    text-align: center;
+
+#divCard{
+    float: left;
 }
