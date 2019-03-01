@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { AfficheEventComponent } from './affiche-event/affiche-event.component';
 import { LoginComponent } from './login/login.component';
 import { CreationEventComponent } from './creation-event/creation-event.component';
+import { UsercoService } from './userco.service';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { CreationEventComponent } from './creation-event/creation-event.componen
       }
     ])
   ],
-  providers: [],
+  providers: [UsercoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
