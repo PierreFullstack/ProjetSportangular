@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Evenement } from '../Evenement';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creation-event',
@@ -12,7 +13,8 @@ export class CreationEventComponent implements OnInit {
   Sports = [];
   event : Evenement = new Evenement();
 
-  constructor(private http: Http) { }
+  constructor(private router: Router,
+    private http: Http) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/sports').subscribe(
@@ -33,6 +35,7 @@ export class CreationEventComponent implements OnInit {
     }, err=>{
       console.log(err);
   })
+  this.router.navigate(['/afficheevent']);
   }
 
 }

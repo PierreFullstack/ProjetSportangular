@@ -16,10 +16,13 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
+          <a href="http://localhost:4200/afficheevent"><button [disabled]="listeParticipants[data.id-1]>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button></a>
         </mat-card-actions>
+        <mat-hint align="end">{{listeParticipants[data.id-1] || 0}}/{{data.sport.nbrMax}}</mat-hint>
+        <div [hidden]="listeParticipants[data.id-1]<data.sport.nbrMax">
+          <p style="color: orangered; font-size: 12px">Complet</p>
+        </div>
       </mat-card>
     </div>
 </div>
 </div>
-  
