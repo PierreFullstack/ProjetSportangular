@@ -3,7 +3,7 @@ import { User } from "./User";
 
 
 export class Evenement{
-    public nom: string;
+    public titre: string;
     public description: string;
     public dateEvent: string;
     public horaire: string;

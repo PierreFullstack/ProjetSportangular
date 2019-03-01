@@ -24,6 +24,7 @@ import { CreationEventComponent } from './creation-event/creation-event.componen
     BrowserAnimationsModule,
     MaterialModule,
     HttpModule,
+    FormsModule,
 
     RouterModule.forRoot([
       {
