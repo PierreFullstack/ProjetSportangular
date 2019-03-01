@@ -1,0 +1,23 @@
+<div id="divCreaEvent">
+  <h3>Formulaire nouvel événement</h3>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Titre" value="Mon événement">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" hintLabel="Format : dd/MM/yy">
+      <input matInput #input maxlength="8" placeholder="Date de l'événement">
+    </mat-form-field>
+
+    <mat-radio-group class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let sport of Sports" [value]="sport">
+        {{sport.nom}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+  </form>
+</div>

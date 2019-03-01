@@ -6,8 +6,8 @@
     <span id="logo"><img src="./assets/logo-app.png" style='width:100%; height:100%'></span>
 
     <span class="example-fill-remaining-space"></span>
-    <button mat-button>Afficher les évènements</button>
-    <button mat-button>Créer un évènement</button>
+    <button mat-button routerLink="afficheevent" routerLinkActive="active">Afficher les évènements</button>
+    <button mat-button routerLink="creationevent" routerLinkActive="active">Créer un évènement</button>
     <button mat-button>Mes groupes</button>
     <span class="align-center"></span>
     <span class="example-spacer"></span>
@@ -15,7 +15,8 @@
     </mat-toolbar-row>
   </mat-toolbar>
   
-  <app-affiche-event></app-affiche-event>
+  <router-outlet></router-outlet>
+  
   </div>
 
 <!--<app-login></app-login> -->
