@@ -2,18 +2,18 @@
 
 
 <div class="container">
-  <h2>Connexion</h2>
-  <p>Bienvenue chez nous! Ici on aime le sport!</p>
+  <h1 style="color:rgb(83, 15, 146)">Connexion</h1>
+  <h5>Bienvenue sur appSport !</h5>
+  <br>
   
-  <form class="example-form">
+  <form class="example-form" #myform="ngForm" (ngSubmit)="connect()">
     <mat-form-field class="example-full-width">
-      <input matInput name="pseudo" placeholder="Pseudo" >
+      <input matInput name="pseudo" #pseudoAction ="ngModel" [(ngModel)]="user.pseudo" placeholder="Pseudo" required>
     </mat-form-field>
+    <br>
     <mat-form-field class="example-full-width">
       <input matInput type="password" name="mdp" placeholder="Password" >
     </mat-form-field>
   </form>
       <button mat-raised-button color="primary">Se connecter</button>
-
- 
 </div>

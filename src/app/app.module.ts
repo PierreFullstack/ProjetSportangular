@@ -31,6 +31,10 @@ import { CreationEventComponent } from './creation-event/creation-event.componen
         component: AfficheEventComponent
       },
       {
+        path: "",
+        component: LoginComponent,
+      },
+      {
         path: "creationevent",
         component: CreationEventComponent
       }
