@@ -14,7 +14,9 @@
     <mat-form-field class="example-full-width">
       <input matInput type="password" name="mdp" placeholder="Password"  #pseudoAction ="ngModel" [(ngModel)]="user.mdp" required>
     </mat-form-field>
+    <br>
+    <div id="mes" *ngIf="show">Pseudo ou mot de pass incorrect</div>
+    <br>
+    <button type="submit" mat-raised-button color="primary">Se connecter</button>
   </form>
-  <br>
-      <button mat-raised-button color="primary">Se connecter</button>
 </div>
