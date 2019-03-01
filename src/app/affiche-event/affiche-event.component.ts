@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { User } from '../User';
 import { Evenement } from '../Evenement';
 import { Participation } from '../Participation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-affiche-event',
@@ -14,9 +15,13 @@ export class AfficheEventComponent implements OnInit {
   tousEvents;
   userconnect : User = new User(); // il faudrait récupérer le user de la session en cours
   event : Evenement = new Evenement(); // récupérer l'événement sur lequel on souhaite s'inscrire
-  participation : Participation = new Participation();
+  participation;
+  listeParticipants;
+  location;
+  
 
-  constructor(private http: Http) { }
+  constructor(private router: Router, 
+    private http: Http) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/event').subscribe(
@@ -28,19 +33,26 @@ export class AfficheEventComponent implements OnInit {
         this.userconnect=reponse.json();
     })
 
+    this.http.get('http://localhost:8080/event/nbrparticipants').subscribe(
+      reponse =>{
+        this.listeParticipants=reponse.json();
+        console.log(this.listeParticipants);
+        console.log(this.listeParticipants[1])
+      }
+    )
     // Tester le nombre de participants dans les événements
   }
 
   participer(eve){
-    console.log(eve)
     this.event = eve;
-    this.participation
-    this.http.post('http://localhost:8080/participation',this.event).subscribe(data=>{
+    this.participation = new Participation(this.event, this.userconnect);
+    console.log(this.participation);
+    this.http.post('http://localhost:8080/participation',this.participation).subscribe(data=>{
       console.log(data);
     }, err=>{
       console.log(err);
   })
+  this.location = '';
   }
   
-
 }
