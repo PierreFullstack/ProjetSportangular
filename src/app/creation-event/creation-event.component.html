@@ -1,20 +1,21 @@
+<br>
 <div id="divCreaEvent">
   <h3>Formulaire nouvel événement</h3>
-  <form class="example-form">
+  <form class="example-form" (ngSubmit)="insertEvent()">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Titre" value="Mon événement">
+      <input matInput placeholder="Titre" [(ngModel)]="event.titre" name="titre" value="Mon événement">
     </mat-form-field>
   
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Description"></textarea>
+      <textarea matInput placeholder="Description" [(ngModel)]="event.description" name="descritpion"></textarea>
     </mat-form-field>
 
     <mat-form-field style="margin-bottom: 5px" class="example-full-width" hintLabel="Format : dd/MM/yy">
-      <input matInput #input maxlength="8" placeholder="Date de l'événement">
+      <input matInput #input [(ngModel)]="event.date" name="date" maxlength="8" placeholder="Date de l'événement">
     </mat-form-field>
 
     <mat-form-field style="margin-bottom: 20px" class="example-full-width" hintLabel="Format : HH:mm">
-      <input matInput #input maxlength="5" placeholder="Heure de l'événement">
+      <input matInput #input [(ngModel)]="event.horaire" name="horaire" maxlength="5" placeholder="Heure de l'événement">
     </mat-form-field>
 
     <!--<mat-form-field class="example-full-width">
@@ -29,11 +30,12 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>-->
 
-    <mat-select placeholder="Choisir le Sport">
+    <mat-select style="margin-bottom: 20px;" [(ngModel)]="event.sport" name="sport" placeholder="Choisir le Sport">
       <mat-option *ngFor="let sport of Sports" [value]="sport">
         {{sport.nom}}
       </mat-option>
     </mat-select>
 
+    <button mat-raised-button>Valider</button>
   </form>
 </div>

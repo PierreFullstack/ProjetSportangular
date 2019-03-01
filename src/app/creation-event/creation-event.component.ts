@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Evenement } from '../Evenement';
 
 @Component({
   selector: 'app-creation-event',
@@ -9,6 +10,7 @@ import { Http } from '@angular/http';
 export class CreationEventComponent implements OnInit {
 
   Sports = [];
+  event : Evenement = new Evenement();
 
   constructor(private http: Http) { }
 
@@ -22,6 +24,15 @@ export class CreationEventComponent implements OnInit {
         console.log(this.Sports);
       }
     );
+  }
+
+  insertEvent() {
+    console.log(this.event);
+    this.http.post('http://localhost:8080/event',this.event).subscribe(data=>{
+      console.log(data);
+    }, err=>{
+      console.log(err);
+  })
   }
 
 }
