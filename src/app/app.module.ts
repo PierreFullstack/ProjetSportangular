@@ -12,6 +12,7 @@ import { AfficheEventComponent } from './affiche-event/affiche-event.component';
 import { LoginComponent } from './login/login.component';
 import { CreationEventComponent } from './creation-event/creation-event.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +25,17 @@ import { CreationEventComponent } from './creation-event/creation-event.componen
     BrowserAnimationsModule,
     MaterialModule,
     HttpModule,
-
+    FormsModule,
     RouterModule.forRoot([
+      {
+        path: "",redirectTo: '/login', pathMatch: 'full'
+      },
       {
         path: "afficheevent",
         component: AfficheEventComponent
       },
       {
-        path: "",
+        path: "login",
         component: LoginComponent,
       },
       {
