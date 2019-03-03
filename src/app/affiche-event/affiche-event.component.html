@@ -35,11 +35,11 @@
     <div id=desc> {{data.description}} </div>
     <div id="particip">
     <a href="http://localhost:4200/afficheevent">
-      <button [disabled]="listeParticipants[data.id-1]>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
+      <button [disabled]="(data.nbrParticipants+1)>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
     </a>
     </div>
-      <div id="nbparticip">{{listeParticipants[data.id-1] || 0}}/{{data.sport.nbrMax}}</div>
-      <div [hidden]="listeParticipants[data.id-1]<data.sport.nbrMax">
+      <div id="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
+      <div [hidden]="(data.nbrParticipants+1)<data.sport.nbrMax">
       <p id="full">Complet</p>
       </div>
   </div>
