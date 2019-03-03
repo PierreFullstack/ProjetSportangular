@@ -14,5 +14,4 @@ export class UsercoService {
     this.user=userco ;
   }
 
-
 }

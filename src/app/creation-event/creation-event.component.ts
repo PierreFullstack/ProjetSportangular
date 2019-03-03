@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Evenement } from '../Evenement';
 import { Router } from '@angular/router';
+import { UsercoService } from './../userco.service';
+
 
 @Component({
   selector: 'app-creation-event',
@@ -14,7 +16,8 @@ export class CreationEventComponent implements OnInit {
   event : Evenement = new Evenement();
 
   constructor(private router: Router,
-    private http: Http) { }
+    private http: Http,
+    private myservice: UsercoService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/sports').subscribe(
@@ -23,13 +26,14 @@ export class CreationEventComponent implements OnInit {
         reponse.json().forEach(element => {
           this.Sports.push(element);
         });
-        console.log(this.Sports);
+        // console.log(this.Sports);
       }
     );
   }
 
   insertEvent() {
-    console.log(this.event);
+    this.event.createur=this.myservice.user;
+    console.log("event qui va être créé", this.event);
     this.http.post('http://localhost:8080/event',this.event).subscribe(data=>{
       console.log(data);
     }, err=>{

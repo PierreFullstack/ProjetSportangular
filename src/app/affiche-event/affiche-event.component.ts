@@ -4,6 +4,7 @@ import { User } from '../User';
 import { Evenement } from '../Evenement';
 import { Participation } from '../Participation';
 import { Router } from '@angular/router';
+import { UsercoService } from './../userco.service';
 
 @Component({
   selector: 'app-affiche-event',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class AfficheEventComponent implements OnInit {
 
   tousEvents;
-  userconnect : User = new User(); // il faudrait récupérer le user de la session en cours
+  userconnect : User = new User(); 
   event : Evenement = new Evenement(); // récupérer l'événement sur lequel on souhaite s'inscrire
   participation;
   listeParticipants;
@@ -21,17 +22,16 @@ export class AfficheEventComponent implements OnInit {
   
 
   constructor(private router: Router, 
-    private http: Http) { }
+    private http: Http,
+    private myservice: UsercoService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/event').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
     })
-    this.http.get('http://localhost:8080/user/1').subscribe(
-      reponse => {
-        this.userconnect=reponse.json();
-    })
+
+    this.userconnect = this.myservice.user;
 
     this.http.get('http://localhost:8080/event/nbrparticipants').subscribe(
       reponse =>{
