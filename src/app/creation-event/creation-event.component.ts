@@ -14,6 +14,7 @@ export class CreationEventComponent implements OnInit {
 
   Sports = [];
   event : Evenement = new Evenement();
+  tousEvents;
 
   constructor(private router: Router,
     private http: Http,
@@ -38,6 +39,10 @@ export class CreationEventComponent implements OnInit {
       console.log(data);
     }, err=>{
       console.log(err);
+  })
+  this.http.get('http://localhost:8080/event').subscribe(
+    reponse => {
+      this.tousEvents=reponse.json();
   })
   this.router.navigate(['/afficheevent']);
   }
