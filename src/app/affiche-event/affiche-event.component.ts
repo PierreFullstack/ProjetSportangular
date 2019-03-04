@@ -14,12 +14,12 @@ import { UsercoService } from './../userco.service';
 export class AfficheEventComponent implements OnInit {
 
   tousEvents;
-  userconnect : User = new User(); 
   event : Evenement = new Evenement(); // récupérer l'événement sur lequel on souhaite s'inscrire
+  eventbis : Evenement = new Evenement(); // On récupère l'event après insertion de la participation dans la BD
   participation;
   listeParticipants;
   location;
-  
+  monurl = 'http://localhost:8080/event/';
 
   constructor(private router: Router, 
     private http: Http,
@@ -40,26 +40,35 @@ export class AfficheEventComponent implements OnInit {
         console.log(this.listeParticipants[1])
       }
     ) */
+    // Tester le nombre de participants dans les événement
 
-    // Tester le nombre de participants dans les événements
 
-  
 
   participer(eve){
     this.event = eve;
     this.participation = new Participation(this.event, this.myservice.user);
-    console.log(this.participation);
+    // console.log(this.participation);
     this.http.post('http://localhost:8080/participation',this.participation).subscribe(data=>{
-      console.log(data);
+    //  console.log(data);
     }, err=>{
       console.log(err);
   })
+
+  this.http.get(this.monurl+this.event.id).subscribe(reponse => {
+      this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
+      if (this.eventbis.nbrParticipants==(this.eventbis.sport.nbrMax-1)){
+        console.log("event à fermer")
+        console.log(this.eventbis);
+      }
+  });
+
+
   this.http.get('http://localhost:8080/event').subscribe(
     reponse => {
       this.tousEvents=reponse.json();
   })
   this.router.navigate(['/afficheevent']);
   }
-  
+
 
 }
