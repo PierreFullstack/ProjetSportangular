@@ -6,7 +6,7 @@ import { User } from './User';
 })
 export class UsercoService {
 
-  user: User =new User();
+  user;
 
   constructor() { }
 
