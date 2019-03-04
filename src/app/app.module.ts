@@ -12,6 +12,7 @@ import { AfficheEventComponent } from './affiche-event/affiche-event.component';
 import { LoginComponent } from './login/login.component';
 import { CreationEventComponent } from './creation-event/creation-event.component';
 import { UsercoService } from './userco.service';
+import { ZoomEventComponent } from './zoom-event/zoom-event.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UsercoService } from './userco.service';
     AppComponent,
     AfficheEventComponent,
     LoginComponent,
-    CreationEventComponent
+    CreationEventComponent,
+    ZoomEventComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,10 @@ import { UsercoService } from './userco.service';
       {
         path: "creationevent",
         component: CreationEventComponent
+      },
+      {
+        path: "zoomevent",
+        component: ZoomEventComponent
       }
     ])
   ],
