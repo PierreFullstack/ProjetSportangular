@@ -1,0 +1,41 @@
+<meta charset="utf-8">
+
+
+<div class="container">
+  <h1 style="color:rgb(83, 15, 146)">Inscription</h1>
+  <h5>Bienvenue !</h5>
+  <br>
+  
+  <form class="example-form" #myform="ngForm" (ngSubmit)="inscrire()">
+    <mat-form-field class="example-full-width">
+      <input matInput name="nom" #pseudoAction ="ngModel" [(ngModel)]="user.nom" placeholder="Nom" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput name="prenom" #pseudoAction ="ngModel" [(ngModel)]="user.prenom" placeholder="Prenom" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput name="pseudo" #pseudoAction ="ngModel" [(ngModel)]="user.pseudo" placeholder="Pseudo" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput name="mail" #pseudoAction ="ngModel" [(ngModel)]="user.mail" placeholder="Mail" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" name="mdp" placeholder="Password"  #pseudoAction ="ngModel" [(ngModel)]="user.mdp" required>
+    </mat-form-field>
+    <br>
+    <div id="mes" *ngIf="show">Vous devez remplir tous les champs</div>
+    <br>
+    <button type="submit" mat-raised-button color="primary">S'inscrire</button>
+  </form>
+  <br>
+  <button type="submit" routerLink="/login" mat-raised-button color="primary">Vous avez déja un compte ?</button>
+</div>
+
+
+  <div *ngIf="showMessage" class="alert alert-success" role="alert">
+    Vous êtes bien inscrit. 
+  </div>
