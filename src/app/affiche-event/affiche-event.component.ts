@@ -30,8 +30,7 @@ export class AfficheEventComponent implements OnInit {
       reponse => {
         this.tousEvents=reponse.json();
     })
-
-    this.userconnect = this.myservice.user;
+  }
     /*
     this.http.get('http://localhost:8080/event/nbrparticipants').subscribe(
       reponse =>{
@@ -44,18 +43,23 @@ export class AfficheEventComponent implements OnInit {
 
     // Tester le nombre de participants dans les événements
 
-  }
+  
 
   participer(eve){
     this.event = eve;
-    this.participation = new Participation(this.event, this.userconnect);
+    this.participation = new Participation(this.event, this.myservice.user);
     console.log(this.participation);
     this.http.post('http://localhost:8080/participation',this.participation).subscribe(data=>{
       console.log(data);
     }, err=>{
       console.log(err);
   })
-  this.location = '';
+  this.http.get('http://localhost:8080/event').subscribe(
+    reponse => {
+      this.tousEvents=reponse.json();
+  })
+  this.router.navigate(['/afficheevent']);
   }
   
+
 }

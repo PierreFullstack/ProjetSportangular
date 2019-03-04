@@ -34,9 +34,9 @@
     <img id="image" src="{{data.sport.lien}}" alt="">
     <div id=desc> {{data.description}} </div>
     <div id="particip">
-    <a href="http://localhost:4200/afficheevent">
+  
       <button [disabled]="(data.nbrParticipants+1)>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
-    </a>
+   
     </div>
       <div id="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
       <div [hidden]="(data.nbrParticipants+1)<data.sport.nbrMax">
