@@ -36,11 +36,14 @@ export class AfficheEventComponent implements OnInit {
     this.http.get('http://localhost:8080/event/nbrparticipants').subscribe(
       reponse =>{
         this.listeParticipants=reponse.json();
+        // il faut compter le créateur comme participant
         console.log(this.listeParticipants);
         console.log(this.listeParticipants[1])
       }
     ) */
+
     // Tester le nombre de participants dans les événements
+
   }
 
   participer(eve){
