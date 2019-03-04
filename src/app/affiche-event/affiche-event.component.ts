@@ -32,14 +32,14 @@ export class AfficheEventComponent implements OnInit {
     })
 
     this.userconnect = this.myservice.user;
-
+    /*
     this.http.get('http://localhost:8080/event/nbrparticipants').subscribe(
       reponse =>{
         this.listeParticipants=reponse.json();
         console.log(this.listeParticipants);
         console.log(this.listeParticipants[1])
       }
-    )
+    ) */
     // Tester le nombre de participants dans les événements
   }
 
