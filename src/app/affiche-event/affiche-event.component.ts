@@ -37,6 +37,7 @@ export class AfficheEventComponent implements OnInit {
     private myservice2: ZoomeventService) { }
 
   ngOnInit() {
+    this.myservice.show();
     this.http.get('http://localhost:8080/event').subscribe(
       reponse => {
         this.tousEvents=reponse.json();

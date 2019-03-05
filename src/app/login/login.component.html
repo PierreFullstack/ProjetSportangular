@@ -8,18 +8,18 @@
   
   <form class="example-form" #myform="ngForm" (ngSubmit)="connect()">
     <mat-form-field class="example-full-width">
-      <input matInput name="pseudo" #pseudoAction ="ngModel" [(ngModel)]="user.pseudo" placeholder="Pseudo" required>
+      <input matInput name="pseudo" #pseudoAction="ngModel" [(ngModel)]="user.pseudo" placeholder="Pseudo" required>
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
-      <input matInput type="password" name="mdp" placeholder="Password"  #pseudoAction ="ngModel" [(ngModel)]="user.mdp" required>
+      <input matInput type="password" name="mdp" #mdpAction="ngModel" [(ngModel)]="user.mdp" placeholder="Password" required>
     </mat-form-field>
     <br>
-    <div id="mes" *ngIf="show">Pseudo ou mot de pass incorrect</div>
+    <div id="mes" *ngIf="show">{{message}}</div>
     <br>
-    <button type="submit" mat-raised-button color="primary">Se connecter</button>
+      <button type="submit" mat-raised-button color="primary">Se connecter</button>
   </form>
   <br>
   <button (click)="inscrireF()" mat-raised-button color="primary">S'inscrire ?</button>
-  
 </div>
+

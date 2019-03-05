@@ -7,11 +7,16 @@ import { User } from './User';
 export class UsercoService {
 
   user;
+  shownavbar : boolean;
 
-  constructor() { }
+  constructor() {this.shownavbar=false; }
 
   mettreuser (userco) {
     this.user=userco ;
   }
+
+  show() { this.shownavbar = true; }
+  hide() { this.shownavbar = false; }
+
 
 }
