@@ -7,7 +7,7 @@
   min-width: 500px;
   border: 3px;
   border-style:outset;
-  height: 550px;
+  height: 580px;
 }
 
 #titre{
@@ -18,9 +18,14 @@
 
 .example-form {
     width: 100%;
-  }
+}
   
-  .example-full-width {
+.example-full-width {
     width: 100%;
-  }
+}
+
+#mes{
+    color: rgb(194, 20, 20);
+    margin-bottom: 10px;
+}
   
