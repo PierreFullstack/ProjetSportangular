@@ -1,24 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-    <span id="logo"><img src="./assets/logo-app.png" style='width:100%; height:100%'></span>
-
-    <span class="example-fill-remaining-space"></span>
-    <button mat-button routerLink="afficheevent" routerLinkActive="active">Afficher les évènements</button>
-    <button mat-button routerLink="creationevent" routerLinkActive="active">Créer un évènement</button>
-    <button mat-button routerLink="groupes" routerLinkActive="active">Lieux</button>
-    <span class="align-center"></span>
-    <span class="example-spacer"></span>
-    <button mat-button routerLink="login" routerLinkActive="active">Deconnexion</button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
+  <app-menu-bar></app-menu-bar>
   <router-outlet></router-outlet>
-  
-  </div>
 
-<!--<app-login></app-login> -->
+</div>
+
 
 

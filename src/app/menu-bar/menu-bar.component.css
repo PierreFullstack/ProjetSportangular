@@ -1,0 +1,15 @@
+#logo{
+    position: relative;
+    height:93%;
+    width: 100px;;
+    background-color: rgb(50, 5, 155);
+    left:0%;
+}
+
+#menubar{
+    min-width: 600px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

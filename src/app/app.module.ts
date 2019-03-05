@@ -15,6 +15,8 @@ import { UsercoService } from './userco.service';
 import { ZoomEventComponent } from './zoom-event/zoom-event.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { GroupesComponent } from './groupes/groupes.component';
+import { EmailService } from './email.service';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { GroupesComponent } from './groupes/groupes.component';
     CreationEventComponent,
     ZoomEventComponent,
     InscriptionComponent,
-    GroupesComponent
+    GroupesComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import { GroupesComponent } from './groupes/groupes.component';
       }
     ])
   ],
-  providers: [UsercoService],
+  providers: [UsercoService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

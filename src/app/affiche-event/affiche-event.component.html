@@ -27,7 +27,7 @@
 </div>
 </div>-->
 
-<div id="todo">
+<!--<div id="todo">
   <div *ngFor="let data of tousEvents" id="divCard" (click)="openDialog(data.id)">
     <div id="titre"><span id="titrecontent">{{data.titre}}</span></div>
     <div id="date">{{data.dateEvent}} - {{data.horaire}}</div>  
@@ -42,5 +42,43 @@
       </div>
   </div>
   
-</div>
+</div>-->
 
+<div id="todo">
+  <div *ngFor="let data of tousEvents" class="divCard" (click)="openDialog(data.id)">
+    <div *ngIf="checkReset()"></div>
+    <div *ngFor="let monEvent of mesEvent">
+      <div *ngIf="checkAfficheEvent(data.id,monEvent.id)">  
+
+        <div class="titre"><span id="titrecontent">{{data.titre}}</span></div>
+        <div class="date">{{data.dateEvent}} - {{data.horaire}}</div>
+        <img class="image" src="{{data.sport.lien}}" alt="">
+        <div class=desc> {{data.description}} </div>
+        <div class="particip">
+          <button [disabled]="true" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
+        </div>
+        <div class="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
+        <div>
+          <p class="full">Je participe déjà à cet événement</p>
+        </div>
+      </div> 
+    </div>
+
+      <div [hidden]="eventAffiche">
+        <div class="titre"><span id="titrecontent">{{data.titre}}</span></div>
+        <div class="date">{{data.dateEvent}} - {{data.horaire}}</div>  
+        <img class="image" src="{{data.sport.lien}}" alt="">
+        <div class=desc> {{data.description}} </div>
+        <div class="particip">
+          <button [disabled]="(data.nbrParticipants+1)>=data.sport.nbrMax||data.createur.id==myservice.user.id" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
+        </div>
+        <div class="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
+        <div [hidden]="data.createur.id!=myservice.user.id">
+          <p class="full">Je suis le créateur de cet événement</p>
+        </div> 
+        <div [hidden]="(data.nbrParticipants+1)<data.sport.nbrMax">
+          <p class="full">Complet</p>
+        </div>    
+      </div>   
+  </div>
+</div>
