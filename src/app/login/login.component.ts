@@ -12,6 +12,7 @@ import { UsercoService } from './../userco.service';
 })
 export class LoginComponent implements OnInit {
 
+  message;
   user: User =new User();
   show=false;
   userrep;
@@ -23,20 +24,25 @@ export class LoginComponent implements OnInit {
   }
 
   connect(){
-    console.log('Tentative de connexion');
-
-    this.http.post('http://localhost:8080/userconnexion', this.user).subscribe(reponse =>{
-      this.userrep=reponse.json();
-      if (this.userrep.mdp != this.user.mdp ){
-        this.show=true;
-      }
-      else{
-        this.myservice.mettreuser(this.userrep);
-        this.router.navigate(['/afficheevent']);
-        console.log(this.myservice.user);
-      }
-    });
-    
+    this.show=false;
+    // console.log('Tentative de connexion');
+    if(this.user.pseudo == null || this.user.mdp == null){
+      this.message="Merci de remplir tous les champs !";
+      this.show=true;}
+      else {
+        this.http.post('http://localhost:8080/userconnexion', this.user).subscribe(reponse =>{
+        this.userrep=reponse.json();
+        if (this.userrep.mdp != this.user.mdp && this.userrep.pseudo != this.user.pseudo){
+          this.message="Pseudo ou mot de passe incorrect"
+          this.show=true;
+        }
+        else{
+          this.myservice.mettreuser(this.userrep);
+          this.router.navigate(['/afficheevent']);
+          // console.log(this.myservice.user);
+        }
+        });
+    }
 
   }
 
