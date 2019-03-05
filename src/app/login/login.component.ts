@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
 
   }
 
-
   inscrireF(){
     this.router.navigate(['/inscription']);
   }

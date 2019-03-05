@@ -35,7 +35,13 @@
   <button type="submit" routerLink="/login" mat-raised-button color="primary">Vous avez déja un compte ?</button>
 </div>
 
+<div *ngIf="showMessage" class="alert alert-success" role="alert">
+  Vous êtes bien inscrit. 
+</div>
+<div *ngIf="showMessage2" class="alert alert-danger" role="alert">
+  Ce pseudo existe déjà!
+</div>
 
-  <div *ngIf="showMessage" class="alert alert-success" role="alert">
-    Vous êtes bien inscrit. 
-  </div>
+<div *ngIf="showMessage3" class="alert alert-warning" role="alert">
+  Mail existant
+</div>
