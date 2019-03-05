@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import { User } from '../User';
 import { Evenement } from '../Evenement';
 import { Participation } from '../Participation';
 import { Router } from '@angular/router';
 import { UsercoService } from './../userco.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { ZoomEventComponent } from '../zoom-event/zoom-event.component';
+import { ZoomeventService } from '../zoomevent.service';
+
 
 @Component({
   selector: 'app-affiche-event',
   templateUrl: './affiche-event.component.html',
   styleUrls: ['./affiche-event.component.css']
 })
+
+
+
 export class AfficheEventComponent implements OnInit {
 
   tousEvents;
@@ -20,10 +27,13 @@ export class AfficheEventComponent implements OnInit {
   listeParticipants;
   location;
   monurl = 'http://localhost:8080/event/';
+  
 
   constructor(private router: Router, 
     private http: Http,
-    private myservice: UsercoService) { }
+    private myservice: UsercoService,
+    public dialog: MatDialog,
+    private myservice2: ZoomeventService) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8080/event').subscribe(
@@ -31,17 +41,6 @@ export class AfficheEventComponent implements OnInit {
         this.tousEvents=reponse.json();
     })
   }
-    /*
-    this.http.get('http://localhost:8080/event/nbrparticipants').subscribe(
-      reponse =>{
-        this.listeParticipants=reponse.json();
-        // il faut compter le créateur comme participant
-        console.log(this.listeParticipants);
-        console.log(this.listeParticipants[1])
-      }
-    ) */
-    // Tester le nombre de participants dans les événement
-
 
 
   participer(eve){
@@ -70,5 +69,18 @@ export class AfficheEventComponent implements OnInit {
   this.router.navigate(['/afficheevent']);
   }
 
+
+  openDialog(id): void {
+    const dialogConfig = new MatDialogConfig();
+
+    console.log(id);
+    this.myservice2.choixEvent(id);
+
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+
+        this.dialog.open(ZoomEventComponent, dialogConfig);
+  }
+  
 
 }

@@ -28,7 +28,7 @@
 </div>-->
 
 <div id="todo">
-  <div *ngFor="let data of tousEvents" id="divCard">
+  <div *ngFor="let data of tousEvents" id="divCard" (click)="openDialog(data.id)">
     <div id="titre"><span id="titrecontent">{{data.titre}}</span></div>
     <div id="date">{{data.dateEvent}} - {{data.horaire}}</div>  
     <img id="image" src="{{data.sport.lien}}" alt="">
@@ -38,8 +38,9 @@
     </div>
       <div id="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
       <div [hidden]="(data.nbrParticipants+1)<data.sport.nbrMax">
-      <p id="full">Complet</p>
+        <p id="full">Complet</p>
       </div>
   </div>
+  
 </div>
 
