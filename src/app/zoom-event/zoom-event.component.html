@@ -1,0 +1,42 @@
+<h1>{{event.titre}}</h1>
+<div>
+  Date : {{event.dateEvent}}
+</div>
+<div>
+  Horaire : {{event.horaire}}
+</div>
+<div>
+  Description : {{event.description}}
+</div>
+<br>
+<div>
+  Participants :
+</div>
+  
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Pseudo</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Mail</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr style="background-color: #673AB7; color: white">
+            <td>{{createur.pseudo}}</td>
+            <td>{{createur.prenom}}</td> 
+            <td>{{createur.nom}}</td>
+            <td>{{createur.mail}}</td>
+          </tr>
+          <tr *ngFor="let participant of Participants">
+            <td>{{participant.pseudo}}</td>
+            <td>{{participant.prenom}}</td> 
+            <td>{{participant.nom}}</td>
+            <td>{{participant.mail}}</td>
+          </tr>      
+      </tbody>
+    </table>
+  </div>
+  <span style="background-color: #673AB7; color: white">Créateur</span>

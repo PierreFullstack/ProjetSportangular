@@ -12,6 +12,7 @@ import { AfficheEventComponent } from './affiche-event/affiche-event.component';
 import { LoginComponent } from './login/login.component';
 import { CreationEventComponent } from './creation-event/creation-event.component';
 import { UsercoService } from './userco.service';
+import { ZoomEventComponent } from './zoom-event/zoom-event.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 
 
@@ -21,6 +22,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
     AfficheEventComponent,
     LoginComponent,
     CreationEventComponent,
+    ZoomEventComponent,
     InscriptionComponent
   ],
   imports: [
@@ -46,9 +48,13 @@ import { InscriptionComponent } from './inscription/inscription.component';
         component: CreationEventComponent
       },
       {
+        path: "zoomevent",
+        component: ZoomEventComponent
+      },
+      {
         path: "inscription",
         component: InscriptionComponent
-      },
+      }
     ])
   ],
   providers: [UsercoService],

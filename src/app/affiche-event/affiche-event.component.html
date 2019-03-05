@@ -28,20 +28,19 @@
 </div>-->
 
 <div id="todo">
-  <div *ngFor="let data of tousEvents" id="divCard">
+  <div *ngFor="let data of tousEvents" id="divCard" (click)="openDialog(data.id)">
     <div id="titre"><span id="titrecontent">{{data.titre}}</span></div>
     <div id="date">{{data.dateEvent}} - {{data.horaire}}</div>  
     <img id="image" src="{{data.sport.lien}}" alt="">
     <div id=desc> {{data.description}} </div>
     <div id="particip">
-  
-      <button [disabled]="(data.nbrParticipants+1)>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
-   
+    <button [disabled]="(data.nbrParticipants+1)>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
     </div>
       <div id="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
       <div [hidden]="(data.nbrParticipants+1)<data.sport.nbrMax">
-      <p id="full">Complet</p>
+        <p id="full">Complet</p>
       </div>
   </div>
+  
 </div>
 
