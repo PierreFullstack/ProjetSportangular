@@ -14,6 +14,7 @@ import { CreationEventComponent } from './creation-event/creation-event.componen
 import { UsercoService } from './userco.service';
 import { ZoomEventComponent } from './zoom-event/zoom-event.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { GroupesComponent } from './groupes/groupes.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     LoginComponent,
     CreationEventComponent,
     ZoomEventComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    GroupesComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,10 @@ import { InscriptionComponent } from './inscription/inscription.component';
       {
         path: "inscription",
         component: InscriptionComponent
+      },
+      {
+        path: "groupes",
+        component: GroupesComponent
       }
     ])
   ],
