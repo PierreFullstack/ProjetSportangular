@@ -21,13 +21,14 @@ import { ZoomeventService } from '../zoomevent.service';
 export class AfficheEventComponent implements OnInit {
 
   tousEvents;
+  mesEvent;
   event : Evenement = new Evenement(); // récupérer l'événement sur lequel on souhaite s'inscrire
   eventbis : Evenement = new Evenement(); // On récupère l'event après insertion de la participation dans la BD
   participation;
   listeParticipants;
   location;
   monurl = 'http://localhost:8080/event/';
-  
+  eventAffiche = false;
 
   constructor(private router: Router, 
     private http: Http,
@@ -40,6 +41,13 @@ export class AfficheEventComponent implements OnInit {
       reponse => {
         this.tousEvents=reponse.json();
     })
+
+    this.http.get('http://localhost:8080/mesparticipations/'+this.myservice.user.id).subscribe(
+      reponse => {
+        this.mesEvent=reponse.json();
+        //console.log(this.mesEvent);
+      }
+    )
   }
 
 
@@ -82,5 +90,27 @@ export class AfficheEventComponent implements OnInit {
         this.dialog.open(ZoomEventComponent, dialogConfig);
   }
   
+  checkAfficheEvent(id1, id2){
+    if(id1==id2){
+      this.eventAffiche = true;
+      
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  checkAfficheEventElse(){
+    if(this.eventAffiche){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  checkReset(){
+    this.eventAffiche = false;
+    return true;
+  }
 
 }
