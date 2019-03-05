@@ -62,8 +62,14 @@ export class AfficheEventComponent implements OnInit {
       console.log(err);
   })
 
+  this.http.get('http://localhost:8080/event').subscribe(
+      reponse => {
+        this.tousEvents=reponse.json();
+        
   this.http.get(this.monurl+this.event.id).subscribe(reponse => {
       this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
+      
+    })
       if (this.eventbis.nbrParticipants==(this.eventbis.sport.nbrMax-1)){
         console.log("event à fermer")
         console.log(this.eventbis);
@@ -94,7 +100,7 @@ export class AfficheEventComponent implements OnInit {
   checkAfficheEvent(id1, id2){
     if(id1==id2){
       this.eventAffiche = true;
-      
+
       return true;
     }else{
       return false;

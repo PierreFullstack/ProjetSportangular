@@ -17,6 +17,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { GroupesComponent } from './groupes/groupes.component';
 import { EmailService } from './email.service';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { AfficheMesEventsComponent } from './affiche-mes-events/affiche-mes-events.component';
+import { ModifEventComponent } from './modif-event/modif-event.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     ZoomEventComponent,
     InscriptionComponent,
     GroupesComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    AfficheMesEventsComponent,
+    ModifEventComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,14 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
       {
         path: "groupes",
         component: GroupesComponent
+      },
+      {
+        path: "affichemesevents",
+        component: AfficheMesEventsComponent
+      },
+      {
+        path: "modifevent",
+        component: ModifEventComponent
       }
     ])
   ],
