@@ -15,6 +15,7 @@ import { UsercoService } from './userco.service';
 import { ZoomEventComponent } from './zoom-event/zoom-event.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { EmailService } from './email.service';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EmailService } from './email.service';
     LoginComponent,
     CreationEventComponent,
     ZoomEventComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,
