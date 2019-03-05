@@ -1,6 +1,6 @@
 <br>
 <div id="divCreaEvent">
-  <h3>Formulaire nouvel événement</h3>
+  <p id ="titre">Création d'un nouvel événement</p>
   <form class="example-form" (ngSubmit)="insertEvent()">
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Titre" [(ngModel)]="event.titre" name="titre" value="Mon événement">
@@ -36,6 +36,6 @@
       </mat-option>
     </mat-select>
 
-    <button mat-raised-button>Valider</button>
+    <button mat-stroked-button color="primary">Valider</button>
   </form>
 </div>

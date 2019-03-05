@@ -21,6 +21,7 @@ export class CreationEventComponent implements OnInit {
     private myservice: UsercoService) { }
 
   ngOnInit() {
+    this.myservice.show();
     this.http.get('http://localhost:8080/sports').subscribe(
       reponse => {
         //console.log(reponse.json());
