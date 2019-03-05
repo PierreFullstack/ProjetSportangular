@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { CreationEventComponent } from './creation-event/creation-event.component';
 import { UsercoService } from './userco.service';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { EmailService } from './email.service';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
       },
     ])
   ],
-  providers: [UsercoService],
+  providers: [UsercoService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
