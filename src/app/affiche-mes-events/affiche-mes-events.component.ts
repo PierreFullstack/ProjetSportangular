@@ -17,7 +17,7 @@ export class AfficheMesEventsComponent implements OnInit {
   mesEvents;
   confirmationSuppr = false;
 
-  constructor(private router: Router, 
+  constructor(
     private http: Http,
     private myservice: UsercoService,
     public dialog: MatDialog,
@@ -44,20 +44,13 @@ export class AfficheMesEventsComponent implements OnInit {
   }
 
   supprimer(event){
-    this.http.delete('http://localhost:8080/event/'+event.id).subscribe(
-      reponse => {
-        this.confirmationSuppr = reponse.json();
-        //console.log(this.confirmationSuppr);
-      }
-    )
+    const dialogConfig = new MatDialogConfig();
+    this.myservice2.choixEvent(event.id);
+    this.myservice2.modeSupprOn();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
 
-    this.http.delete('http://localhost:8080/supprparticipations/event/'+event.id).subscribe(
-      reponse => {
-        this.confirmationSuppr = reponse.json();
-        //console.log(this.confirmationSuppr);
-      }
-    )
-    this.router.navigate(['/afficheevent']);
+    this.dialog.open(ZoomEventComponent, dialogConfig);
   }
 
   modifier(event){

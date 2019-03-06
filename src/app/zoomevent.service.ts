@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ZoomeventService {
 
   idEvent;
+  modeSuppr = false;
 
   constructor() { }
 
@@ -13,4 +14,11 @@ export class ZoomeventService {
     this.idEvent = idEvent;
   }
   
+  modeSupprOn(){
+    this.modeSuppr = true;
+  }
+
+  modeSupprOff(){
+    this.modeSuppr = false;
+  }
 }

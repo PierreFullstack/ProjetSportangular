@@ -40,3 +40,10 @@
     </table>
   </div>
   <span style="background-color: #673AB7; color: white">Créateur</span>
+
+  <div [hidden]="!modeSuppr">
+    <br>
+    <h3>Êtes-vous sûr(e) de vouloir supprimer cet événement ?</h3>
+    <button mat-button (click)="supprEvent(event)">Confirmer</button>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+  </div>
