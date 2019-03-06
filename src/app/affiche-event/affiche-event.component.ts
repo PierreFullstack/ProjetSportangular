@@ -43,6 +43,9 @@ export class AfficheEventComponent implements OnInit {
         this.tousEvents=reponse.json();
     })
 
+    if (this.myservice.user.id == null ){
+      this.myservice.user.id = 1;
+    }
     this.http.get('http://localhost:8080/mesparticipations/'+this.myservice.user.id).subscribe(
       reponse => {
         this.mesEvent=reponse.json();
@@ -71,7 +74,7 @@ export class AfficheEventComponent implements OnInit {
       
     })
       if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
-        console.log("event à fermer")
+        console.log("event à fermer");
         console.log(this.eventbis);
       }
   });
@@ -83,7 +86,6 @@ export class AfficheEventComponent implements OnInit {
   })
   this.router.navigate(['/afficheevent']);
   }
-
 
   openDialog(id): void {
     const dialogConfig = new MatDialogConfig();
@@ -118,6 +120,14 @@ export class AfficheEventComponent implements OnInit {
   checkReset(){
     this.eventAffiche = false;
     return true;
+  }
+
+  GoMesevenements(){
+    this.router.navigate(['/affichemesevents']);
+  }
+
+  GoMesparticipations(){
+    this.router.navigate(['/affichemesparticipations']);
   }
 
 }
