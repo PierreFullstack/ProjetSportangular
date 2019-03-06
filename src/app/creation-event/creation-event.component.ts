@@ -37,6 +37,9 @@ export class CreationEventComponent implements OnInit {
 
   insertEvent() {
     this.event.createur=this.myservice.user;
+    if (this.event.createur.id == null ){   // met martin par défaut si pas de user connecté
+      this.event.createur.id = 1;
+    }
     if(this.event.titre == null || this.event.dateEvent == null || this.event.horaire == null || this.event.sport == null){
       this.message = "Merci de compléter tous les champs obligatoires";
       this.show = true;
