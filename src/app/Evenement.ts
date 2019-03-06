@@ -6,7 +6,7 @@ export class Evenement{
     public id : number;
     public titre: string;
     public description: string;
-    public dateEvent: string;
+    public dateEvent: Date;
     public horaire: string;
     public nbrParticipants: number;
     public sport: Sport;

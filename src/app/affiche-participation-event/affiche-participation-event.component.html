@@ -1,3 +1,12 @@
+<div id="mySidenav" class="sidenav">
+    <div class="example-button-row">
+      <a mat-button (click)="Gotousevenements()">Tous les évènements</a>
+      <a mat-button (click)="GoMesevenements()">Mes événements</a>
+      <a mat-button (click)="GoMesparticipations()" id="encours">Mes participations</a>
+      <button mat-button color="primary">Tri par sport</button>
+    </div>
+</div>
+
 <div id="todo">
     <div *ngFor="let event of mesEvents" class="divCard">
       <div class="titre" (click)="openDialog(event.id)"><span id="titrecontent">{{event.titre}}</span></div>

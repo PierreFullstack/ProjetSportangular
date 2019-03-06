@@ -9,11 +9,11 @@
     <mat-form-field class="example-full-width">
       <textarea matInput name="descritpion" #descriptionAction ="ngModel" [(ngModel)]="event.description" placeholder="Description"></textarea>
     </mat-form-field>
-
+<!--
     <mat-form-field style="margin-bottom: 5px" class="example-full-width" hintLabel="Format : dd/MM/yy">
       <input matInput name="dateEvent" #dateEventAction ="ngModel" [(ngModel)]="event.dateEvent" maxlength="8" placeholder="Date de l'événement" required>
     </mat-form-field>
-
+-->
     <mat-form-field style="margin-bottom: 20px" class="example-full-width" hintLabel="Format : HH:mm">
       <input matInput name="horaire" #horairetAction ="ngModel" [(ngModel)]="event.horaire" maxlength="5" placeholder="Heure de l'événement" required>
     </mat-form-field>
@@ -21,15 +21,16 @@
     <mat-form-field class="example-full-width">
       <input matInput type="number" name="nbrmax" #nbrmaxtAction ="ngModel" [(ngModel)]="event.nbrmax" placeholder="Nombre de participants max">
     </mat-form-field>
-  
-    
+
+    <mat-form-field class="example-full-width">
+        <input matInput type="date" name="dateEvent" #dateEventtAction ="ngModel" [(ngModel)]="event.dateEvent" placeholder="date" required>
+      </mat-form-field>
 
     <!--<mat-form-field class="example-full-width">
       <input matInput [matDatepicker]="picker" placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field>
-
     <mat-form-field>
       <input matInput [matDatepicker]="picker" placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
