@@ -1,0 +1,15 @@
+<div id="todo">
+  <div *ngFor="let event of mesEvents" class="divCard" (click)="openDialog(event.id)">
+    <div class="titre"><span id="titrecontent">{{event.titre}}</span></div>
+    <div class="date">{{event.dateEvent}} - {{event.horaire}}</div>
+    <img class="image" src="{{event.sport.lien}}" alt="">
+    <div class="desc"> {{event.description}} </div>
+    <div class="nbparticip">Participants : {{event.nbrParticipants+1}}/{{event.sport.nbrMax}}</div>
+    <div class="modif">
+      <button mat-stroked-button color="primary" (click)="modifier(event)">Modifier</button>
+    </div>
+    <div class="suppr">
+      <button mat-stroked-button color="primary" (click)="supprimer(event)">Supprimer</button>
+    </div>
+  </div> 
+</div>
