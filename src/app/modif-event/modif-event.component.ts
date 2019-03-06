@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import { ZoomeventService } from '../zoomevent.service';
 import { Evenement } from '../Evenement';
 import { User } from '../User';
+import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-modif-event',
@@ -15,8 +17,10 @@ export class ModifEventComponent implements OnInit {
   event : Evenement = new Evenement;
   createur : User = new User;
 
-  constructor(private http: Http,
-    private myservice: ZoomeventService) { }
+  constructor(private router: Router,
+    private http: Http,
+    private myservice: ZoomeventService,
+    public dialogRef : MatDialogRef<ModifEventComponent>) { }
 
   ngOnInit() {
     this.id = this.myservice.idEvent;
@@ -34,5 +38,12 @@ export class ModifEventComponent implements OnInit {
         console.log(this.event);
       }
     )
+    this.http.get('http://localhost:8080/event/'+this.id).subscribe(
+      reponse => {
+        this.event=reponse.json();
+        this.createur = this.event.createur;
+    })
+    this.router.navigate(['/afficheevent']);
+    this.dialogRef.close();
   }
 }
