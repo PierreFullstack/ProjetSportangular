@@ -1,5 +1,33 @@
+.sidenav {
+    height: 100%;
+    width: 190px;;
+    position: fixed;
+    z-index: 1;
+    top: 64px;;
+    left: 0;
+    background-color: lightgrey;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-image: url(/assets/sidebarbackground.jpg);
+  }
+  
+  .sidenav a {
+    padding: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6e047c;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #4854fc;
+  }
+
 #todo{
-    margin-left: 140px;
+    margin-left: 200px;
 }
 
 .divCard{

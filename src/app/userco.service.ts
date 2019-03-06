@@ -6,7 +6,7 @@ import { User } from './User';
 })
 export class UsercoService {
 
-  user;
+  user = new User;
   shownavbar : boolean;
 
   constructor() {this.shownavbar=false; }
