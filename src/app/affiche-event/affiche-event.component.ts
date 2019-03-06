@@ -70,7 +70,7 @@ export class AfficheEventComponent implements OnInit {
       this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
       
     })
-      if (this.eventbis.nbrParticipants==(this.eventbis.sport.nbrMax-1)){
+      if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
         console.log("event à fermer")
         console.log(this.eventbis);
       }
