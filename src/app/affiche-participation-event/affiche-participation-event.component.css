@@ -83,3 +83,9 @@
     top: -29px;
     right: 18px;
 }
+
+.departicip{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

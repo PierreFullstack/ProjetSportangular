@@ -19,6 +19,7 @@ import { EmailService } from './email.service';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { AfficheMesEventsComponent } from './affiche-mes-events/affiche-mes-events.component';
 import { ModifEventComponent } from './modif-event/modif-event.component';
+import { AfficheParticipationEventComponent } from './affiche-participation-event/affiche-participation-event.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ModifEventComponent } from './modif-event/modif-event.component';
     GroupesComponent,
     MenuBarComponent,
     AfficheMesEventsComponent,
-    ModifEventComponent
+    ModifEventComponent,
+    AfficheParticipationEventComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,10 @@ import { ModifEventComponent } from './modif-event/modif-event.component';
       {
         path: "modifevent",
         component: ModifEventComponent
+      },
+      {
+        path: "affichemesparticipations",
+        component: AfficheParticipationEventComponent
       }
     ])
   ],
