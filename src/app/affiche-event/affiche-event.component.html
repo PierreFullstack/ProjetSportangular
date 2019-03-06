@@ -58,6 +58,9 @@
           <button [disabled]="true" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
         </div>
         <div class="nbparticip" (click)="openDialog(data.id)">{{data.nbrParticipants+1}}/{{data.nbrmax}}</div>
+        <div class="eventfull" [hidden]="(data.nbrParticipants+1)<data.nbrmax" (click)="openDialog(data.id)">
+            <p>Full</p>
+          </div>
         <div (click)="openDialog(data.id)">
           <p class="full">Je participe déjà à cet événement</p>
         </div>
