@@ -5,7 +5,7 @@
 .divCard{
     float: left;
     width: 200px;
-    height: 350px;
+    height: 355px;
     margin: 20px;
     border-style: double;
     border-color: grey;
@@ -48,28 +48,31 @@
     font-style: italic;
     font-size: 70%;
     position: relative;
-    top: -25px;
-    left: 18px;
+    top: 11px;
+    left: 22px;
 }
 
 .particip{
-    display:flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    left: -7px;
 }
 
-.full{
+.ligne{
+    height: 37px;
+}
+
+.crea{
     color: orangered;
     font-size: 12px;
-    position: relative;
-    right: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .eventfull{
     color: orangered;
     float: right;
-    font-size: 14px;
+    font-size: 12px;
     position: relative;
-    top: -29px;
-    right: 18px;
+    top: -25px;
+    right: 17px;
 }
