@@ -72,13 +72,14 @@
         <div class="particip">
           <button [disabled]="(data.nbrParticipants+1)>=data.nbrmax||data.createur.id==myservice.user.id" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
         </div>
+        <div class="eventfull" [hidden]="(data.nbrParticipants+1)<data.nbrmax">
+          <p>Full</p>
+        </div>   
         <div class="nbparticip">{{data.nbrParticipants+1}}/{{data.nbrmax}}</div>
         <div [hidden]="data.createur.id!=myservice.user.id">
           <p class="full">Je suis le créateur de cet événement</p>
         </div> 
-        <div [hidden]="(data.nbrParticipants+1)<data.nbrmax">
-          <p class="full">Complet</p>
-        </div>    
+ 
       </div>   
   </div>
 </div>
