@@ -11,6 +11,7 @@ export class Evenement{
     public nbrParticipants: number;
     public sport: Sport;
     public createur: User;
+    public nbrmax : number;
 
     constructor(){
     }

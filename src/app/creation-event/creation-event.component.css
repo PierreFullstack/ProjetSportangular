@@ -24,6 +24,10 @@
     width: 100%;
 }
 
+#inputnbr{
+  left: 0;;
+}
+
 #mes{
     color: rgb(194, 20, 20);
     margin-bottom: 10px;
