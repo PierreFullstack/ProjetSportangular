@@ -122,6 +122,11 @@ export class AfficheEventComponent implements OnInit {
     return true;
   }
 
+
+  Gotousevenements(){
+    this.router.navigate(['/afficheevent']);
+  }
+
   GoMesevenements(){
     this.router.navigate(['/affichemesevents']);
   }
