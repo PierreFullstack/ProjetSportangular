@@ -50,6 +50,14 @@ export class AfficheMesEventsComponent implements OnInit {
         //console.log(this.confirmationSuppr);
       }
     )
+
+    this.http.delete('http://localhost:8080/supprparticipations/event/'+event.id).subscribe(
+      reponse => {
+        this.confirmationSuppr = reponse.json();
+        //console.log(this.confirmationSuppr);
+      }
+    )
+    this.router.navigate(['/afficheevent']);
   }
 
   modifier(event){

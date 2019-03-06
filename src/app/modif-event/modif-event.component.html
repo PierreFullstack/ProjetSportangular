@@ -1,5 +1,5 @@
 <div id="divCreaEvent">
-    <p id ="titre">Création d'un nouvel événement</p>
+    <p id ="titre">Modification de l'événement</p>
     <form class="example-form" #monform="ngForm" (ngSubmit)="modifEvent()">
       <mat-form-field class="example-full-width">
         <input matInput name="titre" #titreAction ="ngModel" [(ngModel)]="event.titre" placeholder="Titre" required>
@@ -29,11 +29,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>-->
   
-      <mat-select style="margin-bottom: 20px;" name="sport" #sportAction ="ngModel" [(ngModel)]="event.sport"  placeholder="Choisir le Sport *" required>
-        <mat-option *ngFor="let sport of Sports" [value]="sport">
-          {{sport.nom}}
-        </mat-option>
-      </mat-select>
+      
       <div id="mes" *ngIf="show">{{message}}</div>
       <button type="submit" mat-stroked-button color="primary">Valider</button>
     </form>
