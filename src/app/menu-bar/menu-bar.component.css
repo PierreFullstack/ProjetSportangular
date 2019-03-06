@@ -1,14 +1,18 @@
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100% ;
+    min-width: 600px;
+  }
+
 #logo{
     position: relative;
     height:93%;
     width: 100px;;
     background-color: rgb(50, 5, 155);
     left:0%;
-}
-
-#menubar{
-    min-width: 600px;
-    margin-bottom: 30px;
 }
 
 .example-spacer {
