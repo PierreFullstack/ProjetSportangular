@@ -27,7 +27,7 @@ export class AfficheMesEventsComponent implements OnInit {
   ngOnInit() {
     this.myservice.show();    // affiche barre de menu
     if (this.myservice.user.id == null ){     // met martin par défaut si on actualise
-      this.myservice.user.id = 3;
+      this.myservice.user.id = 1;
     }
     this.http.get('http://localhost:8080/meseventcree/'+this.myservice.user.id).subscribe(
       reponse => {

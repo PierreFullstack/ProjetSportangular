@@ -1,5 +1,6 @@
 #divCreaEvent{
-  margin-top: 20px;
+  position: relative;
+  top: 60px;
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
