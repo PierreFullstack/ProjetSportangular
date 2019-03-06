@@ -1,0 +1,9 @@
+
+    .map-responsive iframe {
+    left:10%;
+    top:80px;
+    margin:10px;
+    height:80%;
+    width:80%;
+    position:absolute;
+    }
