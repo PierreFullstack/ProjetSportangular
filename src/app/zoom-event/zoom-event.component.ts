@@ -43,7 +43,6 @@ export class ZoomEventComponent implements OnInit {
     this.idParticipation = this.myservice3.idParticipation;
     this.modeSuppr = this.myservice.modeSuppr;
     this.modeDeparticiper = this.myservice.modeDeparticiper;
-    console.log(this.modeSuppr);
 
     this.http.get('http://localhost:8080/event/'+this.id).subscribe(
       reponse => {
@@ -83,9 +82,7 @@ export class ZoomEventComponent implements OnInit {
       reponse => {
         this.participation=reponse.json();
         this.myservice3.choixparticipation(this.participation.id);
-    })
-
-    console.log(this.myservice3.idParticipation);
+    
 
     this.http.delete('http://localhost:8080/participation/'+this.myservice3.idParticipation).subscribe(
       reponse => {
@@ -93,7 +90,7 @@ export class ZoomEventComponent implements OnInit {
         //console.log(this.confirmationSuppr);
       }
     )
-    
+    })
 
     this.myservice.modeDeparticiperOff();
     this.dialogRef.close();
