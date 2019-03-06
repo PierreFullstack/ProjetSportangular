@@ -43,7 +43,7 @@ export class AfficheEventComponent implements OnInit {
         this.tousEvents=reponse.json();
     })
 
-    if (this.myservice.user.id == null ){
+    if (this.myservice.user.id == null ){   // met martin par défaut si on actualise
       this.myservice.user.id = 1;
     }
     this.http.get('http://localhost:8080/mesparticipations/'+this.myservice.user.id).subscribe(
@@ -121,7 +121,6 @@ export class AfficheEventComponent implements OnInit {
     this.eventAffiche = false;
     return true;
   }
-
 
   Gotousevenements(){
     this.router.navigate(['/afficheevent']);

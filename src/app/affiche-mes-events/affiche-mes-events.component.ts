@@ -18,12 +18,17 @@ export class AfficheMesEventsComponent implements OnInit {
   confirmationSuppr = false;
 
   constructor(
+    private router: Router,
     private http: Http,
     private myservice: UsercoService,
     public dialog: MatDialog,
     private myservice2: ZoomeventService) { }
 
   ngOnInit() {
+    this.myservice.show();    // affiche barre de menu
+    if (this.myservice.user.id == null ){     // met martin par défaut si on actualise
+      this.myservice.user.id = 3;
+    }
     this.http.get('http://localhost:8080/meseventcree/'+this.myservice.user.id).subscribe(
       reponse => {
         this.mesEvents=reponse.json();
@@ -64,4 +69,17 @@ export class AfficheMesEventsComponent implements OnInit {
 
         this.dialog.open(ModifEventComponent, dialogConfig);
   }
+
+  Gotousevenements(){
+    this.router.navigate(['/afficheevent']);
+  }
+
+  GoMesevenements(){
+    this.router.navigate(['/affichemesevents']);
+  }
+
+  GoMesparticipations(){
+    this.router.navigate(['/affichemesparticipations']);
+  }
+
 }

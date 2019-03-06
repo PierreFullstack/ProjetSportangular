@@ -10,9 +10,9 @@
     transition: 0.5s;
     padding-top: 60px;
     background-image: url(/assets/sidebarbackground.jpg);
-  }
+}
   
-  .sidenav a {
+.sidenav a {
     padding: 5px;
     text-decoration: none;
     font-size: 18px;
@@ -20,11 +20,15 @@
     color: #6e047c;
     display: block;
     transition: 0.3s;
-  }
+}
   
-  .sidenav a:hover {
+.sidenav a:hover {
     color: #4854fc;
-  }
+}
+
+#encours{
+    background-color:powderblue;
+}
 
 #todo{
     margin-left: 200px;
