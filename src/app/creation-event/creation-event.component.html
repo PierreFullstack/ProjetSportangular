@@ -18,6 +18,12 @@
       <input matInput name="horaire" #horairetAction ="ngModel" [(ngModel)]="event.horaire" maxlength="5" placeholder="Heure de l'événement" required>
     </mat-form-field>
 
+    <mat-form-field class="example-full-width">
+      <input matInput type="number" name="nbrmax" #nbrmaxtAction ="ngModel" [(ngModel)]="event.nbrmax" placeholder="Nombre de participants max">
+    </mat-form-field>
+  
+    
+
     <!--<mat-form-field class="example-full-width">
       <input matInput [matDatepicker]="picker" placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
