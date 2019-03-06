@@ -7,6 +7,7 @@ export class ZoomeventService {
 
   idEvent;
   modeSuppr = false;
+  modeDeparticiper = false;
 
   constructor() { }
 
@@ -20,5 +21,13 @@ export class ZoomeventService {
 
   modeSupprOff(){
     this.modeSuppr = false;
+  }
+
+  modeDeparticiperOn(){
+    this.modeDeparticiper = true;
+  }
+
+  modeDeparticiperOff(){
+    this.modeDeparticiper = false;
   }
 }

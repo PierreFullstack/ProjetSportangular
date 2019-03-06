@@ -39,4 +39,14 @@ export class AfficheParticipationEventComponent implements OnInit {
         this.dialog.open(ZoomEventComponent, dialogConfig);
   }
 
+  departiciper(event){
+    const dialogConfig = new MatDialogConfig();
+    this.myservice2.choixEvent(event.id);
+    this.myservice2.modeDeparticiperOn();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(ZoomEventComponent, dialogConfig);
+  }
+
 }

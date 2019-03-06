@@ -47,3 +47,10 @@
     <button mat-button (click)="supprEvent(event)">Confirmer</button>
     <button mat-button (click)="onNoClick()">Annuler</button>
   </div>
+
+  <div [hidden]="!modeDeparticiper">
+      <br>
+      <h3>Êtes-vous sûr(e) de vouloir quitter cet événement ?</h3>
+      <button mat-button (click)="quitterEvent(event)">Confirmer</button>
+      <button mat-button (click)="onNoClick()">Annuler</button>
+    </div>

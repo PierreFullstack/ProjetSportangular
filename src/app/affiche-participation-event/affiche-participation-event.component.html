@@ -4,12 +4,12 @@
       <div class="date" (click)="openDialog(event.id)">{{event.dateEvent}} - {{event.horaire}}</div>
       <img class="image" src="{{event.sport.lien}}" alt="" (click)="openDialog(event.id)">
       <div class="desc" (click)="openDialog(event.id)"> {{event.description}} </div>
+      <div class="departicip">
+          <button mat-stroked-button color="primary" (click)="departiciper(event)">Ne plus participer</button>
+      </div>
       <div class="nbparticip" (click)="openDialog(event.id)">Participants : {{event.nbrParticipants+1}}/{{event.nbrmax}}</div>
       <div class="eventfull" [hidden]="(event.nbrParticipants+1)<event.nbrmax" (click)="openDialog(event.id)">
         Full
-      </div>
-      <div class="departicip">
-        <button mat-stroked-button color="primary" (click)="departiciper(event)">Ne plus participer</button>
       </div>
     </div> 
   </div>
