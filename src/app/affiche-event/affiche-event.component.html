@@ -1,48 +1,3 @@
-<!--<div id="container">
-<div id="row">
-  <div class="col-3" *ngFor="let data of tousEvents" id="divCard">
-    <mat-card class="example-card" id="card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title id="titre">{{data.titre}}
-          </mat-card-title>
-          <mat-card-subtitle id="nomsport">{{data.sport.nom}}</mat-card-subtitle>
-          <mat-card-subtitle id="date">{{data.dateEvent}} - {{data.horaire}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="{{data.sport.lien}}" alt="">
-        <mat-card-content>
-          <p id="description">
-            {{data.description}}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-        <a href="http://localhost:4200/afficheevent"><button [disabled]="listeParticipants[data.id-1]>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button></a>
-        </mat-card-actions>
-        <mat-hint align="end">{{listeParticipants[data.id-1] || 0}}/{{data.sport.nbrMax}}</mat-hint>
-        <div [hidden]="listeParticipants[data.id-1]<data.sport.nbrMax">
-          <p style="color: orangered; font-size: 12px">Complet</p>
-        </div>
-      </mat-card>
-    </div>
-</div>
-</div>-->
-
-<!--<div id="todo">
-  <div *ngFor="let data of tousEvents" id="divCard" (click)="openDialog(data.id)">
-    <div id="titre"><span id="titrecontent">{{data.titre}}</span></div>
-    <div id="date">{{data.dateEvent}} - {{data.horaire}}</div>  
-    <img id="image" src="{{data.sport.lien}}" alt="">
-    <div id=desc> {{data.description}} </div>
-    <div id="particip">
-    <button [disabled]="(data.nbrParticipants+1)>=data.sport.nbrMax" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
-    </div>
-      <div id="nbparticip">{{data.nbrParticipants+1}}/{{data.sport.nbrMax}}</div>
-      <div [hidden]="(data.nbrParticipants+1)<data.sport.nbrMax">
-        <p id="full">Complet</p>
-      </div>
-  </div>
-  
-</div>-->
 <div id="mySidenav" class="sidenav">
     <div class="example-button-row">
       <a mat-button (click)="Gotousevenements()" id="encours">Tous les évènements</a>
@@ -61,6 +16,9 @@
     (onDeSelectAll)="onDeSelectAll($event)"
     >
   </ng-multiselect-dropdown>
+  <div class="example-button-row" style="position: absolute; bottom: 5%; padding: 50px;">
+    <a mat-button (click)="GoArchives()">Archives</a>
+  </div>  
 </div>
 
 
