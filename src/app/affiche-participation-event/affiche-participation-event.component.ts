@@ -5,6 +5,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ZoomeventService } from '../zoomevent.service';
 import { ZoomEventComponent } from '../zoom-event/zoom-event.component';
 import { Router } from '@angular/router';
+import { TrisportService } from './../trisport.service';
 
 
 @Component({
@@ -15,14 +16,53 @@ import { Router } from '@angular/router';
 export class AfficheParticipationEventComponent implements OnInit {
 
   mesEvents;
+  idsport;
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
 
   constructor(private http: Http,
     private router: Router,
     private myservice: UsercoService,
     public dialog: MatDialog,
+    private tri: TrisportService,
     private myservice2: ZoomeventService) { }
 
   ngOnInit() {
+
+    this.tri.showtennis();
+    this.tri.showfoot();
+    this.tri.showvolley();
+    this.tri.showbasket();
+    this.tri.showbadminton();
+    this.tri.showcourse();
+
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Tennis' },
+      { item_id: 2, item_text: 'Football' },
+      { item_id: 3, item_text: 'Volley' },
+      { item_id: 4, item_text: 'Basketball' },
+      { item_id: 5, item_text: 'Badminton' },
+      { item_id: 6, item_text: 'Course à pied' }
+    ];
+    this.selectedItems = [
+      { item_id: 1, item_text: 'Tennis' },
+      { item_id: 2, item_text: 'Football' },
+      { item_id: 3, item_text: 'Volley' },
+      { item_id: 4, item_text: 'Basketball' },
+      { item_id: 5, item_text: 'Badminton' },
+      { item_id: 6, item_text: 'Course à pied' }
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: false
+    }
+
     this.myservice.show();    // affiche barre de menu
     if (this.myservice.user.id == null ){     // met martin par défaut si on actualise
       this.myservice.user.id = 1;
@@ -32,6 +72,67 @@ export class AfficheParticipationEventComponent implements OnInit {
         this.mesEvents=reponse.json();
         console.log(this.mesEvents);
     })
+  }
+
+  onItemSelect(item: any) {
+    if (item.item_id==1){this.tri.showtennis()};
+    if (item.item_id==2){this.tri.showfoot()};
+    if (item.item_id==3){this.tri.showvolley()};
+    if (item.item_id==4){this.tri.showbasket()};
+    if (item.item_id==5){this.tri.showbadminton()};
+    if (item.item_id==6){this.tri.showcourse()};
+  }
+
+  onSelectAll() {
+    this.tri.showtennis();
+    this.tri.showfoot();
+    this.tri.showvolley();
+    this.tri.showbasket();
+    this.tri.showbadminton();
+    this.tri.showcourse();
+  }
+
+  onItemDeSelect(item: any) {
+    if (item.item_id==1){this.tri.hidetennis()};
+    if (item.item_id==2){this.tri.hidefoot()};
+    if (item.item_id==3){this.tri.hidevolley()};
+    if (item.item_id==4){this.tri.hidebasket()};
+    if (item.item_id==5){this.tri.hidebadminton()};
+    if (item.item_id==6){this.tri.hidecourse()};
+  }
+  
+  onDeSelectAll() {
+    this.tri.hidetennis();
+    this.tri.hidefoot();
+    this.tri.hidevolley();
+    this.tri.hidebasket();
+    this.tri.hidebadminton();
+    this.tri.hidecourse();
+  }
+
+  checksport(id : number){
+    this.idsport=id;
+    if (this.tri.tennis.id == this.idsport && this.tri.tennis.affiche==false){
+      return false;
+    }
+    else if (this.tri.foot.id == this.idsport && this.tri.foot.affiche==false){
+      return false;
+    }
+    else if (this.tri.volley.id == this.idsport && this.tri.volley.affiche==false){
+      return false;
+    }
+    else if (this.tri.basket.id == this.idsport && this.tri.basket.affiche==false){
+      return false;
+    }
+    else if (this.tri.badminton.id == this.idsport && this.tri.badminton.affiche==false){
+      return false;
+    }
+    else if (this.tri.course.id == this.idsport && this.tri.course.affiche==false){
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
   openDialog(id): void {

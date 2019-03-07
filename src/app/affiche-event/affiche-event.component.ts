@@ -50,6 +50,13 @@ export class AfficheEventComponent implements OnInit {
 
   ngOnInit() {
 
+    this.tri.showtennis();
+    this.tri.showfoot();
+    this.tri.showvolley();
+    this.tri.showbasket();
+    this.tri.showbadminton();
+    this.tri.showcourse();
+
     this.dropdownList = [
       { item_id: 1, item_text: 'Tennis' },
       { item_id: 2, item_text: 'Football' },
@@ -102,6 +109,15 @@ export class AfficheEventComponent implements OnInit {
     if (item.item_id==6){this.tri.showcourse()};
   }
 
+  onSelectAll() {
+    this.tri.showtennis();
+    this.tri.showfoot();
+    this.tri.showvolley();
+    this.tri.showbasket();
+    this.tri.showbadminton();
+    this.tri.showcourse();
+  }
+
   onItemDeSelect(item: any) {
     if (item.item_id==1){this.tri.hidetennis()};
     if (item.item_id==2){this.tri.hidefoot()};
@@ -109,6 +125,40 @@ export class AfficheEventComponent implements OnInit {
     if (item.item_id==4){this.tri.hidebasket()};
     if (item.item_id==5){this.tri.hidebadminton()};
     if (item.item_id==6){this.tri.hidecourse()};
+  }
+  
+  onDeSelectAll() {
+    this.tri.hidetennis();
+    this.tri.hidefoot();
+    this.tri.hidevolley();
+    this.tri.hidebasket();
+    this.tri.hidebadminton();
+    this.tri.hidecourse();
+  }
+  
+  checksport(id : number){
+    this.idsport=id;
+    if (this.tri.tennis.id == this.idsport && this.tri.tennis.affiche==false){
+      return false;
+    }
+    else if (this.tri.foot.id == this.idsport && this.tri.foot.affiche==false){
+      return false;
+    }
+    else if (this.tri.volley.id == this.idsport && this.tri.volley.affiche==false){
+      return false;
+    }
+    else if (this.tri.basket.id == this.idsport && this.tri.basket.affiche==false){
+      return false;
+    }
+    else if (this.tri.badminton.id == this.idsport && this.tri.badminton.affiche==false){
+      return false;
+    }
+    else if (this.tri.course.id == this.idsport && this.tri.course.affiche==false){
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
   participer(eve){
@@ -199,31 +249,6 @@ export class AfficheEventComponent implements OnInit {
 
   GoMesparticipations(){
     this.router.navigate(['/affichemesparticipations']);
-  }
-
-  checksport(id : number){
-    this.idsport=id;
-    if (this.tri.tennis.id == this.idsport && this.tri.tennis.affiche==false){
-      return false;
-    }
-    else if (this.tri.foot.id == this.idsport && this.tri.foot.affiche==false){
-      return false;
-    }
-    else if (this.tri.volley.id == this.idsport && this.tri.volley.affiche==false){
-      return false;
-    }
-    else if (this.tri.basket.id == this.idsport && this.tri.basket.affiche==false){
-      return false;
-    }
-    else if (this.tri.badminton.id == this.idsport && this.tri.badminton.affiche==false){
-      return false;
-    }
-    else if (this.tri.course.id == this.idsport && this.tri.course.affiche==false){
-      return false;
-    }
-    else {
-      return true;
-    }
   }
 
 }
