@@ -180,7 +180,6 @@ export class AfficheEventComponent implements OnInit {
       if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
         console.log("event à fermer");
         console.log(this.eventbis);
-
         this.http.post('http://localhost:8080/mailconfirmationcreateur',this.eventbis).subscribe(
           reponse => {
             this.mail = reponse.json();
@@ -189,7 +188,6 @@ export class AfficheEventComponent implements OnInit {
           this.http.get('http://localhost:8080/listeparticipantsevent/'+this.eventbis.id).subscribe(
             reponse => {
               this.participants=reponse.json();
-
               this.http.post('http://localhost:8080/mailconfirmationparticipants',this.participants)
           })
       }
@@ -197,12 +195,12 @@ export class AfficheEventComponent implements OnInit {
       
   });
 
-
   this.http.get('http://localhost:8080/event').subscribe(
     reponse => {
       this.tousEvents=reponse.json();
+      this.router.navigate(['/afficheevent']);
   })
-  this.router.navigate(['/afficheevent']);
+  
   }
 
   openDialog(id): void {

@@ -90,11 +90,12 @@ export class ZoomEventComponent implements OnInit {
         //console.log(this.confirmationSuppr);
       }
     )
-    })
-
     this.myservice.modeDeparticiperOff();
     this.dialogRef.close();
     this.router.navigate(['/afficheevent']);
+    })
+
+
   }
 
   onNoClick(){
