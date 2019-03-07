@@ -29,6 +29,11 @@ export class AfficheEventComponent implements OnInit {
   location;
   monurl = 'http://localhost:8080/event/';
   eventAffiche = false;
+  item;
+
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
   mail;
   participants;
 
@@ -37,8 +42,36 @@ export class AfficheEventComponent implements OnInit {
     private myservice: UsercoService,
     public dialog: MatDialog,
     private myservice2: ZoomeventService) { }
+    
 
   ngOnInit() {
+
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Tennis' },
+      { item_id: 2, item_text: 'Football' },
+      { item_id: 3, item_text: 'Volley' },
+      { item_id: 4, item_text: 'Basketball' },
+      { item_id: 5, item_text: 'Badminton' },
+      { item_id: 6, item_text: 'Course à pied' }
+    ];
+    this.selectedItems = [
+      { item_id: 1, item_text: 'Tennis' },
+      { item_id: 2, item_text: 'Football' },
+      { item_id: 3, item_text: 'Volley' },
+      { item_id: 4, item_text: 'Basketball' },
+      { item_id: 5, item_text: 'Badminton' },
+      { item_id: 6, item_text: 'Course à pied' }
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: false
+    }
+
     this.myservice.show();
     this.http.get('http://localhost:8080/eventordered').subscribe(
       reponse => {
@@ -56,6 +89,19 @@ export class AfficheEventComponent implements OnInit {
     )
   }
 
+  onItemSelect(item: any) {
+    console.log("je coche cet item");
+    console.log(item.item_id);
+    console.log(item.item_text);
+  }
+
+  onDeItemSelect(item: any) {
+    console.log(item);
+  }
+
+  onDropdownClose(items: any) {
+    console.log(items);
+  }
 
   participer(eve){
     this.event = eve;
