@@ -30,7 +30,7 @@
       <div *ngFor="let monEvent of mesEvent">
         <div *ngIf="checkAfficheEvent(data.id,monEvent.id)"> 
           <div class="titre" (click)="openDialog(data.id)"><span id="titrecontent">{{data.titre}}</span></div>
-          <div class="date" (click)="openDialog(data.id)">{{data.dateEvent}} - {{data.horaire}}</div>
+          <div class="date" (click)="openDialog(data.id)">{{data.dateEvent | date: 'dd/MM/yyyy'}} - {{data.horaire}}</div>
           <img class="image" src="{{data.sport.lien}}" alt="" (click)="openDialog(data.id)">
           <div class="desc" (click)="openDialog(data.id)"> {{data.description}} </div>
           <div class="ligne">
@@ -49,7 +49,7 @@
       </div>
       <div [hidden]="eventAffiche">
         <div class="titre" (click)="openDialog(data.id)"><span id="titrecontent">{{data.titre}}</span></div>
-        <div class="date" (click)="openDialog(data.id)">{{data.dateEvent}} - {{data.horaire}}</div>  
+        <div class="date" (click)="openDialog(data.id)">{{data.dateEvent | date: 'dd/MM/yyyy'}} - {{data.horaire}}</div>  
         <img class="image" src="{{data.sport.lien}}" alt="" (click)="openDialog(data.id)">
         <div class="desc" (click)="openDialog(data.id)"> {{data.description}} </div>
         <div class="ligne">
