@@ -80,30 +80,30 @@
 
 
 <div id="todo">
-  <div *ngFor="let data of tousEvents" class="divCard">
+  <div *ngFor="let data of tousEvents">
+  <div *ngIf="checksport(data.sport.id)">
+    <div class="divCard">
     <div *ngIf="checkReset()"></div>
-    <div *ngFor="let monEvent of mesEvent">
-      <div *ngIf="checkAfficheEvent(data.id,monEvent.id)">  
-
-        <div class="titre" (click)="openDialog(data.id)"><span id="titrecontent">{{data.titre}}</span></div>
-        <div class="date" (click)="openDialog(data.id)">{{data.dateEvent}} - {{data.horaire}}</div>
-        <img class="image" src="{{data.sport.lien}}" alt="" (click)="openDialog(data.id)">
-        <div class="desc" (click)="openDialog(data.id)"> {{data.description}} </div>
-        <div class="ligne">
-          <div class="nbparticip" (click)="openDialog(data.id)">{{data.nbrParticipants+1}}/{{data.nbrmax}}</div>
-          <div class="particip" (click)="openDialog(data.id)">
-            <button [disabled]="true" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
+      <div *ngFor="let monEvent of mesEvent">
+        <div *ngIf="checkAfficheEvent(data.id,monEvent.id)"> 
+          <div class="titre" (click)="openDialog(data.id)"><span id="titrecontent">{{data.titre}}</span></div>
+          <div class="date" (click)="openDialog(data.id)">{{data.dateEvent}} - {{data.horaire}}</div>
+          <img class="image" src="{{data.sport.lien}}" alt="" (click)="openDialog(data.id)">
+          <div class="desc" (click)="openDialog(data.id)"> {{data.description}} </div>
+          <div class="ligne">
+            <div class="nbparticip" (click)="openDialog(data.id)">{{data.nbrParticipants+1}}/{{data.nbrmax}}</div>
+            <div class="particip" (click)="openDialog(data.id)">
+              <button [disabled]="true" mat-stroked-button color="primary" (click)="participer(data)">Participer</button>
+            </div>
+            <div class="eventfull" [hidden]="(data.nbrParticipants+1)<data.nbrmax" (click)="openDialog(data.id)">
+                Full
+            </div>
           </div>
-          <div class="eventfull" [hidden]="(data.nbrParticipants+1)<data.nbrmax" (click)="openDialog(data.id)">
-              Full
+          <div (click)="openDialog(data.id)">
+            <p class="crea">Je participe déjà à cet événement</p>
           </div>
-        </div>
-        <div (click)="openDialog(data.id)">
-          <p class="crea">Je participe déjà à cet événement</p>
-        </div>
-      </div> 
-    </div>
-
+        </div> 
+      </div>
       <div [hidden]="eventAffiche">
         <div class="titre" (click)="openDialog(data.id)"><span id="titrecontent">{{data.titre}}</span></div>
         <div class="date" (click)="openDialog(data.id)">{{data.dateEvent}} - {{data.horaire}}</div>  
@@ -121,7 +121,8 @@
         <div [hidden]="data.createur.id!=myservice.user.id" (click)="openDialog(data.id)">
           <p class="crea">Je suis le créateur de cet événement</p>
         </div> 
- 
-      </div>   
+      </div>  
+    </div> 
+  </div>
   </div>
 </div>

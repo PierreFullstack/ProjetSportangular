@@ -8,6 +8,8 @@ import { UsercoService } from './../userco.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { ZoomEventComponent } from '../zoom-event/zoom-event.component';
 import { ZoomeventService } from '../zoomevent.service';
+import { TrisportService } from './../trisport.service';
+
 
 
 @Component({
@@ -30,6 +32,7 @@ export class AfficheEventComponent implements OnInit {
   monurl = 'http://localhost:8080/event/';
   eventAffiche = false;
   item;
+  idsport;
 
   dropdownList = [];
   selectedItems = [];
@@ -41,6 +44,7 @@ export class AfficheEventComponent implements OnInit {
     private http: Http,
     private myservice: UsercoService,
     public dialog: MatDialog,
+    private tri: TrisportService,
     private myservice2: ZoomeventService) { }
     
 
@@ -90,13 +94,21 @@ export class AfficheEventComponent implements OnInit {
   }
 
   onItemSelect(item: any) {
-    console.log("je coche cet item");
-    console.log(item.item_id);
-    console.log(item.item_text);
+    if (item.item_id==1){this.tri.showtennis()};
+    if (item.item_id==2){this.tri.showfoot()};
+    if (item.item_id==3){this.tri.showvolley()};
+    if (item.item_id==4){this.tri.showbasket()};
+    if (item.item_id==5){this.tri.showbadminton()};
+    if (item.item_id==6){this.tri.showcourse()};
   }
 
-  onDeItemSelect(item: any) {
-    console.log(item);
+  onItemDeSelect(item: any) {
+    if (item.item_id==1){this.tri.hidetennis()};
+    if (item.item_id==2){this.tri.hidefoot()};
+    if (item.item_id==3){this.tri.hidevolley()};
+    if (item.item_id==4){this.tri.hidebasket()};
+    if (item.item_id==5){this.tri.hidebadminton()};
+    if (item.item_id==6){this.tri.hidecourse()};
   }
 
   onDropdownClose(items: any) {
@@ -162,7 +174,6 @@ export class AfficheEventComponent implements OnInit {
   checkAfficheEvent(id1, id2){
     if(id1==id2){
       this.eventAffiche = true;
-
       return true;
     }else{
       return false;
@@ -192,6 +203,31 @@ export class AfficheEventComponent implements OnInit {
 
   GoMesparticipations(){
     this.router.navigate(['/affichemesparticipations']);
+  }
+
+  checksport(id : number){
+    this.idsport=id;
+    if (this.tri.tennis.id == this.idsport && this.tri.tennis.affiche==false){
+      return false;
+    }
+    else if (this.tri.foot.id == this.idsport && this.tri.foot.affiche==false){
+      return false;
+    }
+    else if (this.tri.volley.id == this.idsport && this.tri.volley.affiche==false){
+      return false;
+    }
+    else if (this.tri.basket.id == this.idsport && this.tri.basket.affiche==false){
+      return false;
+    }
+    else if (this.tri.badminton.id == this.idsport && this.tri.badminton.affiche==false){
+      return false;
+    }
+    else if (this.tri.course.id == this.idsport && this.tri.course.affiche==false){
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
 }

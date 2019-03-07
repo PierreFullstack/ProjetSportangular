@@ -21,6 +21,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { AfficheMesEventsComponent } from './affiche-mes-events/affiche-mes-events.component';
 import { ModifEventComponent } from './modif-event/modif-event.component';
 import { AfficheParticipationEventComponent } from './affiche-participation-event/affiche-participation-event.component';
+import { TrisportService } from './trisport.service';
 
 
 @NgModule({
@@ -86,7 +87,7 @@ import { AfficheParticipationEventComponent } from './affiche-participation-even
       }
     ])
   ],
-  providers: [UsercoService, EmailService],
+  providers: [UsercoService, EmailService, TrisportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
