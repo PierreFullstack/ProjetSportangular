@@ -111,10 +111,6 @@ export class AfficheEventComponent implements OnInit {
     if (item.item_id==6){this.tri.hidecourse()};
   }
 
-  onDropdownClose(items: any) {
-    console.log(items);
-  }
-
   participer(eve){
     this.event = eve;
     this.participation = new Participation(this.event, this.myservice.user);
