@@ -26,7 +26,7 @@
     <div *ngIf="checksport(event.sport.id)">
       <div class="divCard">
         <div class="titre" (click)="openDialog(event.id)"><span id="titrecontent">{{event.titre}}</span></div>
-        <div class="date" (click)="openDialog(event.id)">{{event.dateEvent}} - {{event.horaire}}</div>
+        <div class="date" (click)="openDialog(event.id)">{{event.dateEvent | date: 'dd/MM/yyyy'}} - {{event.horaire}}</div>
         <img class="image" src="{{event.sport.lien}}" alt="" (click)="openDialog(event.id)">
         <div class="desc" (click)="openDialog(event.id)"> {{event.description}} </div>
         <div class="departicip">
