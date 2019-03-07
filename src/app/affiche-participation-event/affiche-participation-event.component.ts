@@ -169,4 +169,8 @@ export class AfficheParticipationEventComponent implements OnInit {
     this.router.navigate(['/affichemesparticipations']);
   }
 
+  GoArchives(){
+    this.router.navigate(['/archives']);
+  }
+
 }

@@ -22,6 +22,7 @@ import { AfficheMesEventsComponent } from './affiche-mes-events/affiche-mes-even
 import { ModifEventComponent } from './modif-event/modif-event.component';
 import { AfficheParticipationEventComponent } from './affiche-participation-event/affiche-participation-event.component';
 import { TrisportService } from './trisport.service';
+import { ArchivesComponent } from './archives/archives.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TrisportService } from './trisport.service';
     MenuBarComponent,
     AfficheMesEventsComponent,
     ModifEventComponent,
-    AfficheParticipationEventComponent
+    AfficheParticipationEventComponent,
+    ArchivesComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +86,10 @@ import { TrisportService } from './trisport.service';
       {
         path: "affichemesparticipations",
         component: AfficheParticipationEventComponent
+      },
+      {
+        path: "archives",
+        component: ArchivesComponent
       }
     ])
   ],

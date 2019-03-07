@@ -1,55 +1,36 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Http } from '@angular/http';
-import { User } from '../User';
-import { Evenement } from '../Evenement';
-import { Participation } from '../Participation';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsercoService } from './../userco.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { Http } from '@angular/http';
+import { TrisportService } from '../trisport.service';
+import { UsercoService } from '../userco.service';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ZoomEventComponent } from '../zoom-event/zoom-event.component';
 import { ZoomeventService } from '../zoomevent.service';
-import { TrisportService } from './../trisport.service';
-
-
 
 @Component({
-  selector: 'app-affiche-event',
-  templateUrl: './affiche-event.component.html',
-  styleUrls: ['./affiche-event.component.css']
+  selector: 'app-archives',
+  templateUrl: './archives.component.html',
+  styleUrls: ['./archives.component.css']
 })
-
-
-
-export class AfficheEventComponent implements OnInit {
+export class ArchivesComponent implements OnInit {
 
   tousEvents;
-  mesEvent;
-  event : Evenement = new Evenement(); // récupérer l'événement sur lequel on souhaite s'inscrire
-  eventbis : Evenement = new Evenement(); // On récupère l'event après insertion de la participation dans la BD
-  participation;
-  listeParticipants;
-  location;
-  monurl = 'http://localhost:8080/event/';
-  eventAffiche = false;
+
   item;
   idsport;
 
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
-  mail;
-  participants;
 
   constructor(private router: Router, 
     private http: Http,
-    private myservice: UsercoService,
-    public dialog: MatDialog,
     private tri: TrisportService,
-    private myservice2: ZoomeventService) { }
-    
+    private myservice: UsercoService,
+    private myservice2: ZoomeventService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-
     this.tri.showtennis();
     this.tri.showfoot();
     this.tri.showvolley();
@@ -84,7 +65,7 @@ export class AfficheEventComponent implements OnInit {
     }
 
     this.myservice.show();
-    this.http.get('http://localhost:8080/event').subscribe(
+    this.http.get('http://localhost:8080/oldevent').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
     })
@@ -92,12 +73,6 @@ export class AfficheEventComponent implements OnInit {
     if (this.myservice.user.id == null ){   // met martin par défaut si on actualise
       this.myservice.user.id = 1;
     }
-    this.http.get('http://localhost:8080/mesparticipations/'+this.myservice.user.id).subscribe(
-      reponse => {
-        this.mesEvent=reponse.json();
-        //console.log(this.mesEvent);
-      }
-    )
   }
 
   onItemSelect(item: any) {
@@ -161,50 +136,6 @@ export class AfficheEventComponent implements OnInit {
     }
   }
 
-  participer(eve){
-    this.event = eve;
-    this.participation = new Participation(this.event, this.myservice.user);
-    // console.log(this.participation);
-    this.http.post('http://localhost:8080/participation',this.participation).subscribe(data=>{
-    //  console.log(data);
-    }, err=>{
-      console.log(err);
-  })
-
-  this.http.get('http://localhost:8080/event').subscribe(
-      reponse => {
-        this.tousEvents=reponse.json();
-        
-  this.http.get(this.monurl+this.event.id).subscribe(reponse => {
-      this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
-      if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
-        console.log("event à fermer");
-        console.log(this.eventbis);
-
-        this.http.post('http://localhost:8080/mailconfirmationcreateur',this.eventbis).subscribe(
-          reponse => {
-            this.mail = reponse.json();
-          })
-
-          this.http.get('http://localhost:8080/listeparticipantsevent/'+this.eventbis.id).subscribe(
-            reponse => {
-              this.participants=reponse.json();
-
-              this.http.post('http://localhost:8080/mailconfirmationparticipants',this.participants)
-          })
-      }
-    })
-      
-  });
-
-
-  this.http.get('http://localhost:8080/event').subscribe(
-    reponse => {
-      this.tousEvents=reponse.json();
-  })
-  this.router.navigate(['/afficheevent']);
-  }
-
   openDialog(id): void {
     const dialogConfig = new MatDialogConfig();
 
@@ -217,27 +148,6 @@ export class AfficheEventComponent implements OnInit {
         this.dialog.open(ZoomEventComponent, dialogConfig);
   }
   
-  checkAfficheEvent(id1, id2){
-    if(id1==id2){
-      this.eventAffiche = true;
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-  checkAfficheEventElse(){
-    if(this.eventAffiche){
-      return false;
-    }else{
-      return true;
-    }
-  }
-
-  checkReset(){
-    this.eventAffiche = false;
-    return true;
-  }
 
   Gotousevenements(){
     this.router.navigate(['/afficheevent']);
