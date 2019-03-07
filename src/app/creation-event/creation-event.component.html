@@ -3,7 +3,7 @@
   <p id ="titre">Création d'un nouvel événement</p>
   <form class="example-form" #monform="ngForm" (ngSubmit)="insertEvent()">
     <mat-form-field class="example-full-width">
-      <input matInput name="titre" #titreAction ="ngModel" [(ngModel)]="event.titre" placeholder="Titre" required>
+      <input matInput name="titre" #titreAction ="ngModel" [(ngModel)]="event.titre" placeholder="Titre" maxlength="40" required>
     </mat-form-field>
   
     <mat-form-field class="example-full-width">
