@@ -96,8 +96,7 @@ export class AfficheEventComponent implements OnInit {
       reponse => {
         this.mesEvent=reponse.json();
         //console.log(this.mesEvent);
-      }
-    )
+      })
   }
 
   onItemSelect(item: any) {
@@ -169,37 +168,37 @@ export class AfficheEventComponent implements OnInit {
     //  console.log(data);
     }, err=>{
       console.log(err);
-  })
+     })
 
-  this.http.get('http://localhost:8080/event').subscribe(
+    this.http.get('http://localhost:8080/event').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
-        
-  this.http.get(this.monurl+this.event.id).subscribe(reponse => {
-      this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
-      if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
-        console.log("event à fermer");
-        console.log(this.eventbis);
-        this.http.post('http://localhost:8080/mailconfirmationcreateur',this.eventbis).subscribe(
-          reponse => {
-            this.mail = reponse.json();
+          this.http.get(this.monurl+this.event.id).subscribe(reponse => {
+            this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
+            if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
+            console.log("event à fermer");
+            console.log(this.eventbis);
+            this.http.post('http://localhost:8080/mailconfirmationcreateur',this.eventbis).subscribe(
+              reponse => {
+                this.mail = reponse.json();
+              })
+              this.http.get('http://localhost:8080/listeparticipantsevent/'+this.eventbis.id).subscribe(
+                reponse => {
+                  this.participants=reponse.json();
+                  this.http.post('http://localhost:8080/mailconfirmationparticipants',this.participants)
+              })
+            }
+            this.http.get('http://localhost:8080/event').subscribe(
+              reponse => {
+                this.tousEvents=reponse.json();
+                this.http.get('http://localhost:8080/mesparticipations/'+this.myservice.user.id).subscribe(
+                  reponse => {
+                    this.mesEvent=reponse.json();
+                    this.router.navigate(['/afficheevent']);
+                  })
+             })
           })
-
-          this.http.get('http://localhost:8080/listeparticipantsevent/'+this.eventbis.id).subscribe(
-            reponse => {
-              this.participants=reponse.json();
-              this.http.post('http://localhost:8080/mailconfirmationparticipants',this.participants)
-          })
-      }
-    })
-      
-  });
-
-  this.http.get('http://localhost:8080/event').subscribe(
-    reponse => {
-      this.tousEvents=reponse.json();
-      this.router.navigate(['/afficheevent']);
-  })
+     })
   
   }
 
