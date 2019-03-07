@@ -77,7 +77,7 @@ export class AfficheEventComponent implements OnInit {
     }
 
     this.myservice.show();
-    this.http.get('http://localhost:8080/event').subscribe(
+    this.http.get('http://localhost:8080/eventordered').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
     })
@@ -121,7 +121,7 @@ export class AfficheEventComponent implements OnInit {
       console.log(err);
   })
 
-  this.http.get('http://localhost:8080/event').subscribe(
+  this.http.get('http://localhost:8080/eventordered').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
         
@@ -148,7 +148,7 @@ export class AfficheEventComponent implements OnInit {
   });
 
 
-  this.http.get('http://localhost:8080/event').subscribe(
+  this.http.get('http://localhost:8080/eventordered').subscribe(
     reponse => {
       this.tousEvents=reponse.json();
   })
