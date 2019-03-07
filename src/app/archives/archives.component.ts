@@ -1,35 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { UsercoService } from '../userco.service';
-import { Http } from '@angular/http';
-import { MatDialogConfig, MatDialog } from '@angular/material';
-import { ZoomeventService } from '../zoomevent.service';
-import { ZoomEventComponent } from '../zoom-event/zoom-event.component';
 import { Router } from '@angular/router';
-import { TrisportService } from './../trisport.service';
-
+import { Http } from '@angular/http';
+import { TrisportService } from '../trisport.service';
+import { UsercoService } from '../userco.service';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { ZoomEventComponent } from '../zoom-event/zoom-event.component';
+import { ZoomeventService } from '../zoomevent.service';
 
 @Component({
-  selector: 'app-affiche-participation-event',
-  templateUrl: './affiche-participation-event.component.html',
-  styleUrls: ['./affiche-participation-event.component.css']
+  selector: 'app-archives',
+  templateUrl: './archives.component.html',
+  styleUrls: ['./archives.component.css']
 })
-export class AfficheParticipationEventComponent implements OnInit {
+export class ArchivesComponent implements OnInit {
 
-  mesEvents;
+  tousEvents;
+
+  item;
   idsport;
+
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
 
-  constructor(private http: Http,
-    private router: Router,
-    private myservice: UsercoService,
-    public dialog: MatDialog,
+  constructor(private router: Router, 
+    private http: Http,
     private tri: TrisportService,
-    private myservice2: ZoomeventService) { }
+    private myservice: UsercoService,
+    private myservice2: ZoomeventService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-
     this.tri.showtennis();
     this.tri.showfoot();
     this.tri.showvolley();
@@ -63,15 +64,15 @@ export class AfficheParticipationEventComponent implements OnInit {
       allowSearchFilter: false
     }
 
-    this.myservice.show();    // affiche barre de menu
-    if (this.myservice.user.id == null ){     // met martin par défaut si on actualise
+    this.myservice.show();
+    this.http.get('http://localhost:8080/oldevent').subscribe(
+      reponse => {
+        this.tousEvents=reponse.json();
+    })
+
+    if (this.myservice.user.id == null ){   // met martin par défaut si on actualise
       this.myservice.user.id = 1;
     }
-    this.http.get('http://localhost:8080/mesparticipations/'+this.myservice.user.id).subscribe(
-      reponse => {
-        this.mesEvents=reponse.json();
-        //console.log(this.mesEvents);
-    })
   }
 
   onItemSelect(item: any) {
@@ -109,7 +110,7 @@ export class AfficheParticipationEventComponent implements OnInit {
     this.tri.hidebadminton();
     this.tri.hidecourse();
   }
-
+  
   checksport(id : number){
     this.idsport=id;
     if (this.tri.tennis.id == this.idsport && this.tri.tennis.affiche==false){
@@ -146,16 +147,7 @@ export class AfficheParticipationEventComponent implements OnInit {
 
         this.dialog.open(ZoomEventComponent, dialogConfig);
   }
-
-  departiciper(event){
-    const dialogConfig = new MatDialogConfig();
-    this.myservice2.choixEvent(event.id);
-    this.myservice2.modeDeparticiperOn();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(ZoomEventComponent, dialogConfig);
-  }
+  
 
   Gotousevenements(){
     this.router.navigate(['/afficheevent']);
