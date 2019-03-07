@@ -20,6 +20,7 @@ export class InscriptionComponent implements OnInit {
   private myservice: UsercoService) { }
   pseudotest=0;
   mailtest=0;
+  mail;
 
   showMessage = false;
   showMessage2 = false;
@@ -55,7 +56,12 @@ inscrire(){
               }
               else{
                   this.http.post('http://localhost:8080/user',this.user).subscribe(reponse =>{
-                  this.alluser=reponse.json();})
+                  this.alluser=reponse.json();
+
+                  this.http.post('http://localhost:8080/mailcreationcompte',this.user).subscribe(reponse =>{
+                    this.mail=reponse.json();
+                  })
+                })
                   this.router.navigate(['/inscription']);
                   this.showMessage = true;    // valid
               }
