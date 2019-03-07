@@ -76,19 +76,16 @@
 }
 
 .nbparticip{
-    float: left;
     color: rgb(100, 98, 98);
     font-style: italic;
     font-size: 70%;
-    position: relative;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     top: 11px;
     left: 22px;
 }
 
-.particip{
-    position: relative;
-    left: -7px;
-}
 
 .ligne{
     height: 37px;
@@ -106,6 +103,6 @@
     float: right;
     font-size: 12px;
     position: relative;
-    top: -25px;
-    right: 17px;
+    top: 0px;
+    padding: 20px;
 }

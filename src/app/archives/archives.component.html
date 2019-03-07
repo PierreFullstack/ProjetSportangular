@@ -1,6 +1,6 @@
 <div id="mySidenav" class="sidenav">
   <div class="example-button-row">
-    <a mat-button (click)="Gotousevenements()" id="encours">Tous les évènements</a>
+    <a mat-button (click)="Gotousevenements()">Tous les évènements</a>
     <a mat-button (click)="GoMesevenements()">Mes événements</a>
     <a mat-button (click)="GoMesparticipations()">Mes participations</a>
     <a mat-button style="color: rgb(2, 86, 138);">Tri par sport :</a>
@@ -16,8 +16,8 @@
   (onDeSelectAll)="onDeSelectAll($event)"
   >
 </ng-multiselect-dropdown>
-<div class="example-button-row" style="position: absolute; bottom: 5%; padding: 50px;">
-  <a mat-button (click)="GoArchives()">Archives</a>
+<div class="example-button-row" style="position: absolute; bottom: 12%; width: 100%;">
+  <a mat-button id="encours" (click)="GoArchives()">Archives</a>
 </div>  
 </div>
 
@@ -30,8 +30,8 @@
       <div class="desc" (click)="openDialog(data.id)"> {{data.description}} </div>
       <div class="ligne">
         <div class="nbparticip" (click)="openDialog(data.id)">{{data.nbrParticipants+1}}/{{data.nbrmax}}</div>
-        <div class="eventfull" [hidden]="(data.nbrParticipants+1)<data.nbrmax" (click)="openDialog(data.id)">
-          Full
+        <div class="eventfull"  (click)="openDialog(data.id)">
+          Cet évènement est terminé !
         </div>
       </div>
     </div> 
