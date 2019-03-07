@@ -77,7 +77,7 @@ export class AfficheEventComponent implements OnInit {
     }
 
     this.myservice.show();
-    this.http.get('http://localhost:8080/eventordered').subscribe(
+    this.http.get('http://localhost:8080/event').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
     })
