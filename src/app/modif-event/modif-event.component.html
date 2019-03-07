@@ -2,15 +2,15 @@
     <p id ="titre">Modification de l'événement</p>
     <form class="example-form" #monform="ngForm" (ngSubmit)="modifEvent()">
       <mat-form-field class="example-full-width">
-        <input matInput name="titre" #titreAction ="ngModel" [(ngModel)]="event.titre" placeholder="Titre" required>
+        <input matInput name="titre" #titreAction ="ngModel" [(ngModel)]="event.titre" placeholder="Titre" maxlength="40" required>
       </mat-form-field>
     
       <mat-form-field class="example-full-width">
-        <textarea matInput name="descritpion" #descriptionAction ="ngModel" [(ngModel)]="event.description" placeholder="Description"></textarea>
+        <textarea matInput name="descritpion" #descriptionAction ="ngModel" [(ngModel)]="event.description" placeholder="Description" maxlength="100"></textarea>
       </mat-form-field>
   
-      <mat-form-field style="margin-bottom: 5px" class="example-full-width" hintLabel="Format : dd/MM/yy">
-        <input matInput name="dateEvent" #dateEventAction ="ngModel" [(ngModel)]="event.dateEvent" maxlength="8" placeholder="Date de l'événement" required>
+      <mat-form-field class="example-full-width">
+        <input matInput type="date" name="dateEvent" #dateEventtAction ="ngModel" [(ngModel)]="event.dateEvent" placeholder="date" required>
       </mat-form-field>
   
       <mat-form-field style="margin-bottom: 20px" class="example-full-width" hintLabel="Format : HH:mm">
