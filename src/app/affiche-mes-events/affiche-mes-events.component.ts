@@ -71,7 +71,7 @@ export class AfficheMesEventsComponent implements OnInit {
     this.http.get('http://localhost:8080/meseventcree/'+this.myservice.user.id).subscribe(
       reponse => {
         this.mesEvents=reponse.json();
-        console.log(this.mesEvents);
+        //console.log(this.mesEvents);
     })
   }
 
