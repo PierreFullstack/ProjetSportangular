@@ -34,6 +34,8 @@ export class AfficheEventComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  mail;
+  participants;
 
   constructor(private router: Router, 
     private http: Http,
@@ -117,12 +119,24 @@ export class AfficheEventComponent implements OnInit {
         
   this.http.get(this.monurl+this.event.id).subscribe(reponse => {
       this.eventbis=reponse.json();     // on récupère les infos de l'event après MAJ de la participation
-      
-    })
       if (this.eventbis.nbrParticipants==(this.eventbis.nbrmax-1)){
         console.log("event à fermer");
         console.log(this.eventbis);
+
+        this.http.post('http://localhost:8080/mailconfirmationcreateur',this.eventbis).subscribe(
+          reponse => {
+            this.mail = reponse.json();
+          })
+
+          this.http.get('http://localhost:8080/listeparticipantsevent/'+this.eventbis.id).subscribe(
+            reponse => {
+              this.participants=reponse.json();
+
+              this.http.post('http://localhost:8080/mailconfirmationparticipants',this.participants)
+          })
       }
+    })
+      
   });
 
 

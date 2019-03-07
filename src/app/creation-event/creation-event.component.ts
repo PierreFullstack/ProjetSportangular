@@ -17,6 +17,7 @@ export class CreationEventComponent implements OnInit {
   tousEvents;
   show = false;
   message;
+  mail;
 
   constructor(private router: Router,
     private http: Http,
@@ -46,11 +47,21 @@ export class CreationEventComponent implements OnInit {
     }
     else {
     console.log("event qui va être créé", this.event);
+
+    this.http.post('http://localhost:8080/mailcreation',this.event).subscribe(
+      reponse => {
+        this.mail = reponse.json();
+      }
+    )
+    
     this.http.post('http://localhost:8080/event',this.event).subscribe(data=>{
       console.log(data);
     }, err=>{
       console.log(err);
     })
+
+
+
     this.http.get('http://localhost:8080/event').subscribe(
       reponse => {
         this.tousEvents=reponse.json();
