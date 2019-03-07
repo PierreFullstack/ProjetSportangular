@@ -36,14 +36,13 @@ export class ModifEventComponent implements OnInit {
       reponse => {
         this.event=reponse.json();
         console.log(this.event);
-      }
-    )
-    this.http.get('http://localhost:8080/event/'+this.id).subscribe(
-      reponse => {
-        this.event=reponse.json();
-        this.createur = this.event.createur;
+        this.http.get('http://localhost:8080/event').subscribe(
+          reponse => {
+            this.event=reponse.json();
+            this.router.navigate(['/afficheevent']);
+            this.dialogRef.close();
+        })
     })
-    this.router.navigate(['/afficheevent']);
-    this.dialogRef.close();
   }
+
 }

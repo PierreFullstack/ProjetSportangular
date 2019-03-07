@@ -54,27 +54,20 @@ export class ZoomEventComponent implements OnInit {
       reponse => {
         this.Participants=reponse.json();
     })
-
-    
   }
 
   supprEvent(event){
     this.http.delete('http://localhost:8080/event/'+event.id).subscribe(
       reponse => {
         this.confirmationSuppr = reponse.json();
-        //console.log(this.confirmationSuppr);
-      }
-    )
-
+      })
     this.http.delete('http://localhost:8080/supprparticipations/event/'+event.id).subscribe(
-      reponse => {
-        this.confirmationSuppr = reponse.json();
-        //console.log(this.confirmationSuppr);
-      }
-    )
-    this.myservice.modeSupprOff();
-    this.dialogRef.close();
-    this.router.navigate(['/afficheevent']);
+        reponse => {
+          this.confirmationSuppr = reponse.json();
+          this.myservice.modeSupprOff();
+          this.dialogRef.close();
+          this.router.navigate(['/afficheevent']);
+      })
   }
 
   quitterEvent(event){
@@ -82,20 +75,15 @@ export class ZoomEventComponent implements OnInit {
       reponse => {
         this.participation=reponse.json();
         this.myservice3.choixparticipation(this.participation.id);
-    
-
     this.http.delete('http://localhost:8080/participation/'+this.myservice3.idParticipation).subscribe(
       reponse => {
         this.confirmationSuppr = reponse.json();
         //console.log(this.confirmationSuppr);
-      }
-    )
-    this.myservice.modeDeparticiperOff();
-    this.dialogRef.close();
-    this.router.navigate(['/afficheevent']);
+        this.myservice.modeDeparticiperOff();
+        this.dialogRef.close();
+        this.router.navigate(['/afficheevent']);
+      })
     })
-
-
   }
 
   onNoClick(){

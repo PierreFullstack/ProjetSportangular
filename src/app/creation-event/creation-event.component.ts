@@ -51,8 +51,7 @@ export class CreationEventComponent implements OnInit {
     this.http.post('http://localhost:8080/mailcreation',this.event).subscribe(
       reponse => {
         this.mail = reponse.json();
-      }
-    )
+      })
     
     this.http.post('http://localhost:8080/event',this.event).subscribe(data=>{
       console.log(data);

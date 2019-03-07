@@ -166,7 +166,6 @@ export class AfficheMesEventsComponent implements OnInit {
 
         dialogConfig.disableClose = false;
         dialogConfig.autoFocus = true;
-
         this.dialog.open(ModifEventComponent, dialogConfig);
   }
 
