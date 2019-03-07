@@ -6,6 +6,7 @@ import { MaterialModule } from './material';
 import { Http, HttpModule } from '@angular/http';
 import { RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 import { AfficheEventComponent } from './affiche-event/affiche-event.component';
@@ -42,6 +43,7 @@ import { AfficheParticipationEventComponent } from './affiche-participation-even
     MaterialModule,
     HttpModule,
     FormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     RouterModule.forRoot([
       {
         path: "",redirectTo: '/login', pathMatch: 'full'
